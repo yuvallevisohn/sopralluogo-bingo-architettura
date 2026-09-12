@@ -20,7 +20,10 @@
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
-    background:var(--bg); color:var(--ink); font-family:"Archivo","Heebo",system-ui,sans-serif;
+    background-color:var(--bg);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect x='20' y='30' width='90' height='220' rx='2' fill='rgba(255,255,255,.09)' transform='rotate(-8 65 140)'/%3E%3Crect x='185' y='8' width='28' height='185' fill='rgba(255,255,255,.07)'/%3E%3Crect x='305' y='48' width='120' height='45' rx='2' fill='rgba(255,255,255,.10)' transform='rotate(12 365 70)'/%3E%3Ccircle cx='88' cy='432' r='72' fill='rgba(255,255,255,.08)'/%3E%3Ccircle cx='422' cy='78' r='46' fill='rgba(255,255,255,.06)'/%3E%3Ccircle cx='302' cy='348' r='30' fill='none' stroke='rgba(255,255,255,.10)' stroke-width='10'/%3E%3Crect x='462' y='182' width='18' height='105' fill='rgba(255,255,255,.09)'/%3E%3Crect x='128' y='318' width='162' height='40' rx='2' fill='rgba(255,255,255,.06)' transform='rotate(-5 209 338)'/%3E%3Cellipse cx='382' cy='462' rx='82' ry='50' fill='rgba(255,255,255,.07)' transform='rotate(20 382 462)'/%3E%3Crect x='502' y='352' width='80' height='185' fill='rgba(255,255,255,.08)' transform='rotate(10 542 444)'/%3E%3Ccircle cx='202' cy='552' r='55' fill='rgba(255,255,255,.06)'/%3E%3Crect x='350' y='200' width='15' height='80' fill='rgba(255,255,255,.09)'/%3E%3C/svg%3E");
+    background-size:600px 600px;
+    color:var(--ink); font-family:"Archivo","Heebo",system-ui,sans-serif;
     line-height:1.4; -webkit-font-smoothing:antialiased;
   }
   .wrap{max-width:1180px;margin:0 auto;padding:0 20px 90px;}
@@ -294,9 +297,13 @@
   .tzone.has-img .tz-fill{z-index:1;}
 
   /* --- site info panel inside modal --- */
-  .minfo{margin-top:16px;padding:13px 15px;background:var(--paper-3);border:1px solid var(--line);border-inline-start:3px solid var(--gold);}
-  .minfo p{margin:0;font-size:12.5px;line-height:1.7;color:var(--ink-soft);}
-  .minfo-label{font-size:10.5px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px;}
+  .minfo{margin-top:16px;background:var(--paper-3);border:1px solid var(--line);border-inline-start:3px solid var(--gold);}
+  .minfo-img{width:100%;max-height:220px;object-fit:cover;display:block;}
+  .minfo-body{padding:13px 15px;}
+  .minfo p{margin:0 0 8px;font-size:12.5px;line-height:1.75;color:var(--ink-soft);}
+  .minfo p:last-child{margin-bottom:0;}
+  .minfo h4{margin:12px 0 4px;font-size:12px;font-weight:700;color:var(--ink);letter-spacing:.04em;text-transform:uppercase;}
+  .minfo-label{font-size:10.5px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;}
 
   @media (max-width:640px){
     .hero{grid-template-columns:120px 1fr;gap:16px;}
@@ -401,8 +408,11 @@
     <div class="mvisit-date" id="mVisitDate"></div>
 
     <div class="minfo" id="mInfo" style="display:none;">
-      <div class="minfo-label">📖 על האתר</div>
-      <p id="mInfoText"></p>
+      <img class="minfo-img" id="mInfoImg" style="display:none;" alt="">
+      <div class="minfo-body">
+        <div class="minfo-label">📖 על האתר</div>
+        <div id="mInfoText"></div>
+      </div>
     </div>
 
     <div class="mfield">
@@ -512,10 +522,10 @@
   { city: "Pisa", km: 216, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Sziara.jpg&width=600", sites: [
     { name: "Piazza dei Miracoli", architect: "Multiple", period: "Romanesque", prio: 3, info:"UNESCO 1987. ארבעה מבנים שיצרו 4 דורות — קתדרלה (1063), מגדל (1173), בפטיסטרו (1152), בית קברות (1278). כולם שיש לבן על דשא ירוק — 'פלדה' של ימי-ביניים. הכניסה לקתדרלה חינם; מגדל — בתשלום." },
   ]},
-  { city: "San Vito d'Altivole", km: 220, sites: [
+  { city: "San Vito d'Altivole", km: 220, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Brion_Cemetery_San_Vito_d%27Altivole.jpg&width=600", sites: [
     { name: "Brion Cemetery", architect: "Carlo Scarpa", period: "Postwar", prio: 3, info:"1969–1978, מוזיאון ב-open air. סקרפה עיצב לעצמו קבר בפינה. הבריכה, הגשרון, הסרקופגים הכפולים של הזוג ברין — כל פרט בחישוב ותכנון של עשור. חובה לבוא עם מדריך — הסמלים נסתרים." },
   ]},
-  { city: "Poggio a Caiano", km: 235, sites: [
+  { city: "Poggio a Caiano", km: 235, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Villa_medicea_di_Poggio_a_Caiano.jpg&width=600", sites: [
     { name: "Villa Medicea di Poggio a Caiano", architect: "Giuliano da Sangallo", period: "Renaissance", prio: 3, info:"1485, הזמנה של לורנצו המגניפיקו. הוילה הרנסאנסית הראשונה שנבנתה כ'טיפוס' — עם פורטיקו, גרם מדרגות ובסיס מוגבה. טרקוטה על הטימפנון — אלגוריה של ירגוון על ידי ברונצינו." },
   ]},
   { city: "Venezia", km: 245, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Basilica_di_San_Marco_zlatna.jpg&width=600", sites: [
@@ -523,7 +533,7 @@
     { name: "Fondazione Querini Stampalia", architect: "Carlo Scarpa", period: "Postwar", prio: 3, info:"1963, הסבה של ארמון ונציאני ל-2 קומות תחתיות. סקרפה שילב מים (האגם נכנס בשיטפונות) כאלמנט עיצובי: תעלות ורמות שמנחות את הרגל. אחד המבנים הכי אינטנסיביים מבחינת פרט." },
     { name: "Olivetti Showroom", architect: "Carlo Scarpa", period: "Postwar", prio: 3, info:"1958, חנות תצוגה קטנה (65 מ\"ר) בפיאצה סן מרקו. סקרפה חילק בזהירות ניהול מבקרים, אור וחומרים יקרים בסביבה עתיקה. כיום FAI שמרה אותה ופתחה שוב — חדר אחד, אחד הפנים הטובים בעולם." },
     { name: "Palazzo Ducale", architect: "Multiple", period: "Gothic", prio: 3, info:"מאה 9-17. הגותיקה הוויניציאנית — קומה ראשונה: ארקדות; שנייה: לוג'יה; שלישית: קיר מוצק הפוך מהרגיל. גשר האנחות (1600) מחבר לכלא. חדר הגדול קונסיליו (1419): 60x25 מ׳ עם תקרת ציורים של טינטורטו." },
-    { name: "Punta della Dogana", architect: "Tadao Ando", period: "Adaptive reuse", prio: 3, info:"2009, מחסן מכס ונציאני (1677) הוסב על ידי אנדו לגלריה של פינו — אוסף אמנות עכשווית. אנדו השתמש רק בבטון חשוף ומינה שהוסיף לחלל. מיקום קצה הגרנד קנל — מרהיב." },
+    { name: "Punta della Dogana", architect: "Tadao Ando", period: "Adaptive reuse", prio: 3, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Punta_della_Dogana_-_Venice.jpg&width=600", info:"שוכן בקצה חצי האי דורסודורו, בנקודה שבה תעלת הגרנד קנאל פוגשת את תעלת הג'ודקה, פונטה דלה דוגאנה הוא אחד הפרויקטים האדריכליים המרתקים ביותר של ונציה של המאה ה-21. המבנה המקורי, שנבנה בין 1677 ל-1682 על ידי האדריכל ג'וזפה בנוני, שימש כמחסן מכס ימי — La Dogana da Mar. הצריח האיקוני בראשו, עם כדור הזהב שעליו פסל הפורטונה מסתובב ברוח, היה לאחד הסמלים המזוהים של ונציה לדורות.\n\n**האדריכלות: אנדו מדבר עם בנוני**\n\nב-2009 הפקיד איש העסקים הצרפתי פרנסואה פינו את השיפוץ בידיו של טאדאו אנדו — בחירה שעוררה פולמוס אך הפכה לאחד ממפגשי הקיצוניות-שבשקט של האדריכלות העכשווית. אנדו שמר על מעטפת הלבנים ההיסטורית כמעט ללא נגיעה, ובתוכה הכניס מבנה עצמאי של בטון חשוף — חתימתו הבלתי מוטעית. הבטון הפוליש של אנדו, מוחלק עד שהוא כמעט מתנשא לחרסינה, עומד בדיאלוג לא נוח ומשכנע במיוחד עם האבן, הלבנה והעץ הישן. שני מבני בטון תוחמים את המרחב הראשי ויוצרים מתח בין ישן לחדש מבלי שאחד מהם מנסה לנצח.\n\n**ההקשר התרבותי: מי ניצח את גוגנהיים?**\n\nפינו בחר בפונטה דלה דוגאנה לאחר שהביס את מוזיאון גוגנהיים בתחרות על הזכות לשפץ את המבנה. הבחירה עשתה גלים — ונציה, שמוכרת כשמרנית בעניין שינויים אדריכליים, קיבלה לא רק עיצוב חדש אלא גם אוסף אמנות עכשווית בקנה מידה עולמי. המבנה מהווה חלק ממוסד Palazzo Grassi שגם הוא בידי פינו. יחד, שני האתרים מציגים את אחד מאוספי האמנות העכשווית הגדולים בעולם, עם עבודות של דמיאן הירסט, ג'ף קונס, סינדי שרמן ועוד.\n\n**הביקורת: שתיקה כדיאלוג**\n\nמבקרי אדריכלות נחלקים על הפרויקט, אך רובם מסכימים שאנדו עשה את מה שאנדו תמיד עושה: הוא לא ניסה להתחכם למבנה ההיסטורי, אלא הוסיף שכבה עכשווית, כנה ובעלת אופי עצמאי. השמש שחודרת דרך החלונות הגבוהים, הצבע הניטרלי של הבטון, ההיעדר המכוון של כל קישוט — כולם מרכזים את תשומת הלב על האמנות ועל הנוף: דרך חלונות הגלריה נגלית ונציה כציור.\n\n**טיפ לביקור**\n\nבואו לפנות בוקר, לפני שהסיורים מגיעים — בשעה שהאור הוונציאני הלבן-כסף נכנס אלכסונית דרך החלונות ונוחת על הבטון האפור. הכניסה כוללת גם את Palazzo Grassi — כדאי לקנות כרטיס משולב." },
     { name: "San Giorgio Maggiore", architect: "Andrea Palladio", period: "Renaissance", prio: 3, info:"1566–1610, מהצד שמול פלאצו דוקלה. פלאדיו פתר את בעיית הפגנת שתי 'קצות' — נאף לטינית ועמודי פורטיקו — ע״י שכבת חזיתות מוצגת. עלו לפעמון לנוף הטוב ביותר של ונציה." },
     { name: "Santa Maria della Salute", architect: "Baldassare Longhena", period: "Baroque", prio: 3, info:"1631, נדר לאחר מגיפה. לונגנה — ונציאני — יצר בניין שמנצח על כניסת הגרנד קנל. 125,000 עמודי עץ באדמה כבסיס. הציר הפנימי המסתחרר — 2 אפסידות זזות — ייחודי לבארוק ונציאני." },
     { name: "Procuratie Vecchie restoration", architect: "David Chipperfield", period: "Adaptive reuse", prio: 2, info:"2021, Chipperfield שחזר את הארקדות הישנות של פיאצה ס'מרקו לטובת 'The Human Safety Net' — מרכז חברתי של ג'נרלי. כניסה לגג — הנוף הרחב ביותר על הפיאצה." },
@@ -796,7 +806,7 @@
 
   function getItemsForCat(c, catKey){
     if(catKey === "architecture"){
-      return c.sites.map(s => ({ id: idOf(c.city, s.name), name: s.name, sub: s.architect+" · "+s.period, prio: s.prio, info: s.info||"", custom:false }));
+      return c.sites.map(s => ({ id: idOf(c.city, s.name), name: s.name, sub: s.architect+" · "+s.period, prio: s.prio, info: s.info||"", siteImg: s.img||"", custom:false }));
     }
     const arr = customItems[catCityKey(catKey, c.city)] || [];
     return arr.map(it => ({ id: it.id, name: it.name, sub:"", prio:0, custom:true, cat:catKey }));
@@ -929,8 +939,15 @@
     document.getElementById("mPeriod").textContent = c.city;
     const infoEl = document.getElementById("mInfo");
     const infoTxt = document.getElementById("mInfoText");
-    if(it.info){ infoEl.style.display=""; infoTxt.textContent=it.info; }
-    else { infoEl.style.display="none"; }
+    const infoImg = document.getElementById("mInfoImg");
+    if(it.info){
+      infoEl.style.display="";
+      infoTxt.innerHTML = it.info.split(/\n\n+/).map(p=>p.startsWith("**")
+        ? "<h4>"+p.replace(/\*\*/g,"")+"</h4>"
+        : "<p>"+p+"</p>").join("");
+      if(it.siteImg){ infoImg.src=it.siteImg; infoImg.style.display=""; }
+      else { infoImg.src=""; infoImg.style.display="none"; }
+    } else { infoEl.style.display="none"; }
     updateVisitBtn(it.id);
     const ex = extra[it.id] || {};
     document.getElementById("mOpinion").value = ex.opinion || "";
