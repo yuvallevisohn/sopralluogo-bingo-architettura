@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -10,23 +10,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F8F8F5; --paper-2:#FFFFFF; --paper-3:#ECEDEA;
-    --marble-vein:#C9CDC8; --marble-soft:#E5E7E3;
-    --ink:#242824; --ink-soft:#696F6A; --line:#D7DAD5; --line-strong:#AEB4AE;
-    --blue:#5B7673; --red:#9D4F43; --red-tint:rgba(157,79,67,.11); --blue-tint:rgba(91,118,115,.12);
-    --seal:#9D4F43; --gold:#A98A52; --gold-tint:rgba(169,138,82,.12);
+    --bg:#1B45B0; --bg-deep:#122E80;
+    --paper:#F5F3EE; --paper-2:#FFFFFF; --paper-3:#EDEBE4;
+    --marble-vein:#C5C8C3; --marble-soft:#E0E2DE;
+    --ink:#0A0C0A; --ink-soft:#50564F; --line:#CDD0CA; --line-strong:#A8ADA8;
+    --blue:#2563EB; --red:#C8402A; --red-tint:rgba(200,64,42,.11); --blue-tint:rgba(37,99,235,.12);
+    --seal:#C8402A; --gold:#C49A38; --gold-tint:rgba(196,154,56,.12);
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
-    background:var(--paper); color:var(--ink); font-family:"Archivo","Heebo",system-ui,sans-serif;
+    background:var(--bg); color:var(--ink); font-family:"Archivo","Heebo",system-ui,sans-serif;
     line-height:1.4; -webkit-font-smoothing:antialiased;
-    background-image:
-      linear-gradient(115deg,transparent 0 18%,rgba(201,205,200,.34) 19%,transparent 22% 46%,rgba(229,231,227,.58) 48%,transparent 52%),
-      linear-gradient(35deg,transparent 0 28%,rgba(174,180,174,.26) 29%,transparent 33% 64%,rgba(215,218,213,.42) 66%,transparent 70%),
-      linear-gradient(160deg,rgba(255,255,255,.92),rgba(246,247,244,.84) 48%,rgba(255,255,255,.96));
-    background-size:520px 520px,420px 420px,100% 100%;
-    background-attachment:fixed;
   }
   .wrap{max-width:1180px;margin:0 auto;padding:0 20px 90px;}
 
@@ -225,6 +220,84 @@
   footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line-strong);font-size:12.5px;color:var(--ink-soft);line-height:1.6;}
   footer b{color:var(--ink);}
 
+  /* --- tab switcher in eyebrow --- */
+  .tab-btn{
+    font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;
+    background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
+    color:#fff;padding:5px 12px;letter-spacing:.05em;transition:background .12s;
+  }
+  .tab-btn:hover,.tab-btn.active{background:rgba(255,255,255,.3);}
+
+  /* --- dates tab section --- */
+  #datesSection{display:none;margin-top:24px;}
+  .dates-frame{border:1.5px solid var(--ink);background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(239,241,238,.76)),var(--paper-2);}
+  .dates-head{padding:14px 20px;border-bottom:1px solid var(--line-strong);display:flex;align-items:baseline;gap:16px;}
+  .dates-head h2{font-family:"Fraunces",serif;font-size:20px;font-weight:600;margin:0;}
+  .dates-head span{font-size:12px;color:var(--ink-soft);font-weight:600;}
+  .date-row{
+    display:grid;grid-template-columns:56px 1fr 1fr 1fr 60px;border-bottom:1px solid var(--line);
+    align-items:start;
+  }
+  .date-row:last-child{border-bottom:none;}
+  .date-row:hover{background:rgba(91,118,115,.04);}
+  .date-cell{padding:10px 14px;border-inline-start:1px solid var(--line);font-size:13px;}
+  .date-cell:first-child{border-inline-start:none;background:var(--paper-3);text-align:center;font-family:"Fraunces",serif;font-weight:600;font-size:15px;color:var(--red);}
+  .date-cell.visited{background:var(--red-tint);}
+  .date-label{font-size:10px;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+  .date-input{
+    width:100%;border:none;background:transparent;font-family:inherit;font-size:13px;color:var(--ink);
+    outline:none;resize:none;line-height:1.45;
+  }
+  .date-input:focus{background:rgba(37,99,235,.05);}
+  .date-photo-btn{
+    background:none;border:1px solid var(--line);cursor:pointer;padding:6px 8px;
+    font-size:14px;color:var(--ink-soft);width:100%;margin-top:4px;
+  }
+  .date-photo-btn:hover{border-color:var(--ink);}
+  .date-cal-btn{
+    background:none;border:none;cursor:pointer;font-size:18px;padding:10px;
+    color:var(--ink-soft);align-self:center;
+  }
+  .date-cal-btn:hover{color:var(--blue);}
+  .date-header-row{
+    display:grid;grid-template-columns:56px 1fr 1fr 1fr 60px;
+    background:var(--ink);color:#fff;font-size:10.5px;font-weight:700;
+    text-transform:uppercase;letter-spacing:.06em;
+  }
+  .date-header-row div{padding:7px 14px;border-inline-start:1px solid rgba(255,255,255,.15);}
+  .date-header-row div:first-child{border-inline-start:none;}
+
+  /* --- elements that sit directly on the blue body background --- */
+  .eyebrow{background:var(--bg-deep);}
+  h1.title{color:#fff;}
+  h1.title .b{color:#FFD085;}
+  .subtitle{color:rgba(255,255,255,.82);}
+  .stats{border-top-color:rgba(255,255,255,.35);border-bottom-color:rgba(255,255,255,.2);}
+  .stat{border-inline-start-color:rgba(255,255,255,.2);}
+  .stat .num{color:#fff;}
+  .stat .lbl{color:rgba(255,255,255,.68);}
+  .stat.done .num{color:#FFD085;}
+  .progress-line{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.25);}
+  .progress-cap{color:rgba(255,255,255,.72);}
+  footer{color:rgba(255,255,255,.62);border-top-color:rgba(255,255,255,.18);}
+  footer b{color:#fff;}
+
+  /* --- city image tiles in treemap --- */
+  .tzone.has-img{background-size:cover;background-position:center;}
+  .tzone.has-img::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(8,8,8,.82) 0%,rgba(8,8,8,.22) 55%,rgba(8,8,8,.05) 100%);
+  }
+  .tzone.has-img .tz-name,.tzone.has-img .tz-frac,.tzone.has-img .tz-km{color:#fff;position:relative;z-index:1;}
+  .tzone.has-img.complete .tz-name{color:#FFD085;}
+  .tzone.has-img .seal-mini{color:#FFD085;border-color:#FFD085;z-index:1;}
+  .tzone.has-img .tz-fill{z-index:1;}
+
+  /* --- site info panel inside modal --- */
+  .minfo{margin-top:16px;padding:13px 15px;background:var(--paper-3);border:1px solid var(--line);border-inline-start:3px solid var(--gold);}
+  .minfo p{margin:0;font-size:12.5px;line-height:1.7;color:var(--ink-soft);}
+  .minfo-label{font-size:10.5px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px;}
+
   @media (max-width:640px){
     .hero{grid-template-columns:120px 1fr;gap:16px;}
     .stats{grid-template-columns:repeat(2,1fr);}
@@ -241,7 +314,10 @@
 <div class="wrap">
 
   <header class="top">
-    <div class="eyebrow">SOPRALUOGO<span class="rule"></span>MILANO 🇮🇹</div>
+    <div class="eyebrow">SOPRALUOGO<span class="rule"></span>MILANO 🇮🇹<span class="rule"></span>
+      <button class="tab-btn" id="tabBingo" onclick="switchTab('bingo')" style="display:none;">🏛️ בינגו</button>
+      <button class="tab-btn" id="tabDates" onclick="switchTab('dates')">📅 דייטים</button>
+    </div>
     <div class="hero">
       <div class="hero-photo"><div class="tape"></div><img id="heroImg" alt="אנחנו"></div>
       <div>
@@ -292,6 +368,19 @@
     </div>
   </section>
 
+  <section id="datesSection">
+    <div class="dates-frame">
+      <div class="dates-head">
+        <h2>לוח הדייטים השבועי</h2>
+        <span>24 שבועות · לחצו על 📅 להוספת יומן · תמונות נשמרות מקומית</span>
+      </div>
+      <div class="date-header-row">
+        <div>שבוע</div><div>שם הדייט / תכנון</div><div>בפועל</div><div>זכרונות</div><div>📅</div>
+      </div>
+      <div id="datesGrid"></div>
+    </div>
+  </section>
+
   <footer>
     <b>Sopralluogo</b> — סופרלואוגו, המילה האיטלקית לביקור של אדריכל באתר. 124 אתרים, 37 ערים, לפי מרחק אווירי ממילאנו.<br>
     הסימונים, החוות דעת והתמונות נשמרים בדפדפן הזה בלבד (localStorage).
@@ -310,6 +399,11 @@
       <button class="mbtn primary" id="mVisitBtn">✓ ביקרתי</button>
     </div>
     <div class="mvisit-date" id="mVisitDate"></div>
+
+    <div class="minfo" id="mInfo" style="display:none;">
+      <div class="minfo-label">📖 על האתר</div>
+      <p id="mInfoText"></p>
+    </div>
 
     <div class="mfield">
       <label>מה דעתנו?</label>
@@ -336,203 +430,203 @@
 </div>
 
 <script>const CITIES = [
-  { city: "Milano", km: 0, sites: [
-    { name: "Bocconi University — New Campus", architect: "SANAA (Sejima + Nishizawa)", period: "Contemporary", prio: 3 },
-    { name: "Duomo di Milano", architect: "Multiple", period: "Gothic", prio: 3 },
-    { name: "Fondazione Prada", architect: "OMA / Rem Koolhaas", period: "Contemporary", prio: 3 },
-    { name: "Galleria Vittorio Emanuele II", architect: "Giuseppe Mengoni", period: "19th century", prio: 3 },
-    { name: "Generali Tower", architect: "Zaha Hadid", period: "Contemporary", prio: 3 },
-    { name: "Pirelli Tower", architect: "Gio Ponti + Pier Luigi Nervi", period: "Modernism", prio: 3 },
-    { name: "Torre Velasca", architect: "BBPR", period: "Postwar", prio: 3 },
-    { name: "Villa Necchi Campiglio", architect: "Piero Portaluppi", period: "Modernism", prio: 3 },
-    { name: "Allianz Tower", architect: "Arata Isozaki + Andrea Maffei", period: "Contemporary", prio: 2 },
-    { name: "Bosco Verticale", architect: "Stefano Boeri", period: "Contemporary", prio: 2 },
-    { name: "Ca' Brutta", architect: "Giovanni Muzio", period: "Modernism", prio: 2 },
-    { name: "Casa Atellani", architect: "Piero Portaluppi", period: "Modernism / Historic", prio: 2 },
-    { name: "Casa Berri-Meregalli", architect: "Giulio Ulisse Arata", period: "Liberty / Eclectic", prio: 2 },
-    { name: "Casa Galimberti", architect: "Giovanni Battista Bossi", period: "Liberty / Art Nouveau", prio: 2 },
-    { name: "Casa Rustici", architect: "Terragni / Muzio", period: "Modernism", prio: 2 },
-    { name: "Fondazione Prada — Torre", architect: "OMA / Rem Koolhaas", period: "Contemporary", prio: 2 },
-    { name: "Grafton — Bocconi Building", architect: "Grafton Architects", period: "Contemporary", prio: 2 },
-    { name: "Libeskind Residences", architect: "Daniel Libeskind", period: "Contemporary", prio: 2 },
-    { name: "Museo del Novecento", architect: "Italo Rota / Fabio Fornasari", period: "Adaptive reuse", prio: 2 },
-    { name: "Torre Unicredit", architect: "César Pelli", period: "Contemporary", prio: 2 },
-    { name: "Triennale Milano", architect: "Giovanni Muzio", period: "Modernism", prio: 2 },
-    { name: "Casa degli Atellani garden", architect: "Piero Portaluppi", period: "Modernism / Historic", prio: 1 },
+  { city: "Milano", km: 0, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Duomo_di_Milano_dalla_Madonnina.jpg&width=600", sites: [
+    { name: "Bocconi University — New Campus", architect: "SANAA (Sejima + Nishizawa)", period: "Contemporary", prio: 3, info:"קמפוס שנפתח ב-2008, מורכב מ-7 בניינים לבנים 'מרחפים' על גבי פילוטי, יוצרים מרחב ציבורי נוזלי ביניהם. SANAA ניצחה בתחרות בין-לאומית. כדאי להגיע בשעת בוקר כשהסטודנטים פעילים." },
+    { name: "Duomo di Milano", architect: "Multiple", period: "Gothic", prio: 3, info:"הקתדרלה הגותית הגדולה בעולם, הוחל בבנייתה ב-1386 ונמשכה כ-600 שנה. 135 חריטות, 3,400 פסלים. עלו לגג — מומלץ בשקיעה לנוף מרהיב על עמודי השיש הלבן." },
+    { name: "Fondazione Prada", architect: "OMA / Rem Koolhaas", period: "Contemporary", prio: 3, info:"מתחם 1919 שומר, משלב מחסנים ישנים עם מבנים חדשים, כולל 'La Haunted House' המוזהב. כולאס שמר את בניין הברזל השחור כניגוד מכוון לעתיקות. בר קפה תכנן Wes Anderson." },
+    { name: "Galleria Vittorio Emanuele II", architect: "Giuseppe Mengoni", period: "19th century", prio: 3, info:"הגלריה המכוסה הראשונה בעולם (1877), עם כיפת פלדה וזכוכית של 47 מ׳ ופסיפסי רצפה מרהיבים. מנגוני נפל למותו מהגג ערב הפתיחה. הסוד: לסובב עקב על האיבר של השור בפסיפס." },
+    { name: "Generali Tower", architect: "Zaha Hadid", period: "Contemporary", prio: 3, info:"מגדל 170 מ׳ שנחנך 2017, חלק ממתחם CityLife. הצורה הספירלית אינה אסתטית בלבד — המבנה האלכסוני מחסך עד 40% בכוח רוח לעומת מגדל ישר. שם הכינוי המקומי: 'Lo Storto'." },
+    { name: "Pirelli Tower", architect: "Gio Ponti + Pier Luigi Nervi", period: "Modernism", prio: 3, info:"127 מ׳, בנוי 1958, היה הגבוה באירופה בזמן הקמתו. פונטי עיצב את הפגז, נרווי את השלד — שני הגדולים. הצורה של עלה הכפולה — שתי פרבולות אנכיות — ייחודית בעולם." },
+    { name: "Torre Velasca", architect: "BBPR", period: "Postwar", prio: 3, info:"1958, 106 מ׳, סימל ספורני בסיום מלחמה. BBPR פעלו בתוך מגבלות לא לסגור שטחי שמים, ויצרו מגדל עם 'כתרים' שמזכירים מגדלי מדרסה מדיבלית. אהוב ושנוא באותה מידה על ידי ביקורת." },
+    { name: "Villa Necchi Campiglio", architect: "Piero Portaluppi", period: "Modernism", prio: 3, info:"וילה 1935 בלב מילאנו, שמורה בשלמותה עם ריהוט מקורי וגן ובריכה. פורטלופי תכנן כל פרט, כולל שסתומי ברז מיוחדים. FAI (National Trust איטלקי) מנהל אותה — כניסה בתשלום." },
+    { name: "Allianz Tower", architect: "Arata Isozaki + Andrea Maffei", period: "Contemporary", prio: 2, info:"הגבוה ביותר בCityLife, 209 מ׳, 50 קומות. חזות כפולה — קרמיקה לבנה בחוץ, זכוכית בפנים — יוצרת אפקט 'נשימה' בלילה. שם כינוי: 'Il Dritto' (הישר)." },
+    { name: "Bosco Verticale", architect: "Stefano Boeri", period: "Contemporary", prio: 2, info:"שני מגדלים 80+112 מ׳ עם 800 עצים ו-2,500 שיחים על המרפסות. 2015 — זכה בפרס השנה של Emporis. הצמחים מטפלים ע״י מרפסות עם גישה לפועלי גינון בראפל." },
+    { name: "Ca' Brutta", architect: "Giovanni Muzio", period: "Modernism", prio: 2, info:"1923, שם ה'בית המכוער' ניתן בלעג אך דבק. מוזיו שילב פאשיזם ייצוגי עם גחמות נאו-קלאסיות. אחד הדוגמאות הנדירות של נובצ'נטו מילנזה — תנועה שלא זכתה לתשומת לב בינלאומית." },
+    { name: "Casa Atellani", architect: "Piero Portaluppi", period: "Modernism / Historic", prio: 2, info:"בית ב-Via Magenta, נדגם מחדש על ידי פורטלופי בשנות ה-30, שמר גן עם ייחוס ל-Luini. ליאונרדו דה וינצ'י שכר בו כנראה חדר בזמן ציור 'הסעודה האחרונה'. ביקור בגן — ראה אתר ATM." },
+    { name: "Casa Berri-Meregalli", architect: "Giulio Ulisse Arata", period: "Liberty / Eclectic", prio: 2, info:"1912–14, ויא פוגצ'אצ'י 8. אחד הביטויים המוקצנים ביותר של ה-Liberty המילנזי: פסלים, ברזל מיוחד, ויטראז'. אראטה ניסה להיות המקבילה של גאודי — פחות פופולרי, לא פחות מדהים." },
+    { name: "Casa Galimberti", architect: "Giovanni Battista Bossi", period: "Liberty / Art Nouveau", prio: 2, info:"1905, ויא מלזיאנה. הבית המעוטר ביותר מסגנון Liberty במילאנו: כל החזית מלאה בפסלות טרקוטה, פרחים ופנים. נמצא מול בניין דומה (Casa Guazzoni) — השווה." },
+    { name: "Casa Rustici", architect: "Terragni / Muzio", period: "Modernism", prio: 2, info:"1935–36, גשר מכוסה בין שני בניינים — חידוש אורבני שנוי במחלוקת בזמנו. טראגני (ראציונליסט) ומוזיו (נובצ'נטו) שותפות לא סבירה שיצרה יחד כלאיים יפה." },
+    { name: "Fondazione Prada — Torre", architect: "OMA / Rem Koolhaas", period: "Contemporary", prio: 2, info:"מגדל 9 קומות שנוסף למתחם ב-2018, עם אוסף אמנות קבוע של פראדה. חזות זכוכית מוזהבת כניגוד ל'Haunted House'. הנוף מהקומה ה-9 על מילאנו — מהטובים בעיר." },
+    { name: "Grafton — Bocconi Building", architect: "Grafton Architects", period: "Contemporary", prio: 2, info:"2008, זכה בפרס Stirling ב-2020 — פרס האדריכלות הבריטי היוקרתי. גרפטון יצרו עם בטון חשוף 'עיר בתוך עיר', עם שדרות פנימיות ומגרש ספורט על הגג." },
+    { name: "Libeskind Residences", architect: "Daniel Libeskind", period: "Contemporary", prio: 2, info:"שלושה מגדלים CityLife, זוויות דקונסטרוקטיביסטיות אופייניות ללייבסקינד. מאוד אהובים על המילנזים — בניגוד לביקורת המקצועית שחילקה דעות. אחד הפרויקטים המגורים היקרים ביותר בעיר." },
+    { name: "Museo del Novecento", architect: "Italo Rota / Fabio Fornasari", period: "Adaptive reuse", prio: 2, info:"2010, הסבת Arengario (1956 פשיסטי) למוזיאון. מסלול ספירלי דרך אמנות מהמאה ה-20. מומלץ: הנוף הישיר אל הדואומו מהחלון הפנורמי בקומה ה-2." },
+    { name: "Torre Unicredit", architect: "César Pelli", period: "Contemporary", prio: 2, info:"231 מ׳, הגבוהה בכיכר גאריבלדי, נחנכה 2011. פלי תכנן את כוכב הלכת האבני בבסיס, מרחב ציבורי יוצא דופן לפרויקט תאגידי. הספיירה בפסגה מוארת בלילה." },
+    { name: "Triennale Milano", architect: "Giovanni Muzio", period: "Modernism", prio: 2, info:"1933, תוכנן לתערוכות מדי 3 שנים (Triennale), מוזיאון עיצוב קבוע. מוזיו יצר שפה 'ייצוגית-מודרנית' שהתאימה לפשיזם מבלי להיות מפורשת. גן הפסלים בחוץ חינם." },
+    { name: "Casa degli Atellani garden", architect: "Piero Portaluppi", period: "Modernism / Historic", prio: 1, info:"גן ויניארד קטן (3 דונם!) בלב מילאנו, שוחזר על ידי פורטלופי. לפי המסורת — ענבי גפן שנשתלו בימי ליאונרדו. פתוח לביקור בחודשי קיץ." },
   ]},
-  { city: "Crespi d'Adda", km: 30, sites: [
-    { name: "Crespi d'Adda workers' village", architect: "Ernesto Pirovano / others", period: "Industrial urbanism", prio: 3 },
+  { city: "Crespi d'Adda", km: 30, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Crespi_d%27Adda_-_Il_paese.jpg&width=600", sites: [
+    { name: "Crespi d'Adda workers' village", architect: "Ernesto Pirovano / others", period: "Industrial urbanism", prio: 3, info:"כפר עובדים שלם מ-1878, אתר מורשת עולמית UNESCO מ-1995. 320 בתים, כנסייה, בית קברות, בית ספר ובית חולים — עיר בתוך עיר לעובדי מפעל הטקסטיל של קרספי. תושבים עדיין חיים בו." },
   ]},
-  { city: "Como", km: 40, sites: [
-    { name: "Casa del Fascio", architect: "Giuseppe Terragni", period: "Rationalism", prio: 3 },
-    { name: "Novocomum", architect: "Giuseppe Terragni", period: "Rationalism", prio: 3 },
+  { city: "Como", km: 40, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Casa_del_Fascio_%28Como%29.jpg&width=600", sites: [
+    { name: "Casa del Fascio", architect: "Giuseppe Terragni", period: "Rationalism", prio: 3, info:"1936, נקרא כיום 'Palazzo Terragni'. ריבוע מושלם 33×33×16.5 מ׳. טראגני ביטא את 'שקיפות' הפשיזם: פאשדה זכוכית שמאפשרת ראיית הרצועות הפנימיות. אחד הבניינים המשפיעים ביותר של המאה ה-20." },
+    { name: "Novocomum", architect: "Giuseppe Terragni", period: "Rationalism", prio: 3, info:"1929, בניין דירות — הראשון של טראגני. הפינות מעוגלות כ'ריאות' שמאוורר, וחיתוך קומה ה-4 יוצר לוג'יה פנורמית מפורסמת. נשמר היטב, עם דיירים פרטיים." },
   ]},
-  { city: "Bergamo", km: 46, sites: [
-    { name: "GAMeC / contemporary area", architect: "Various", period: "Contemporary", prio: 1 },
+  { city: "Bergamo", km: 46, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Bergamo_city.jpg&width=600", sites: [
+    { name: "GAMeC / contemporary area", architect: "Various", period: "Contemporary", prio: 1, info:"מוזיאון האמנות העכשווית של ברגמו, בציטדלה הוניציאנית. אוסף קטן אך איכותי. הכניסה לCittà Alta בלבד שווה את הנסיעה — עיר עתיקה מוקפת חומה ב-450 מ׳ גובה." },
   ]},
-  { city: "Ivrea", km: 103, sites: [
-    { name: "Olivetti complex", architect: "Figini / Pollini / others", period: "Modernism", prio: 3 },
+  { city: "Ivrea", km: 103, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Olivetti_Ico_factory_Ivrea.jpg&width=600", sites: [
+    { name: "Olivetti complex", architect: "Figini / Pollini / others", period: "Modernism", prio: 3, info:"UNESCO 2018. מתחם של 27 מבנים שתכנן אוליבטי ל-Adriano Olivetti — עיר אידיאלית סוציאל-דמוקרטית. כוללת מפעל (פיגיני+פולליני), מעונות, גן ילדים (ניזולי), ספרייה ובריכה. ביקור חובה." },
   ]},
-  { city: "Genova", km: 119, sites: [
-    { name: "Palazzi dei Rolli / Via Garibaldi", architect: "Multiple", period: "Renaissance / Baroque", prio: 3 },
+  { city: "Genova", km: 119, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Via_Garibaldi_Genoa.jpg&width=600", sites: [
+    { name: "Palazzi dei Rolli / Via Garibaldi", architect: "Multiple", period: "Renaissance / Baroque", prio: 3, info:"UNESCO 2006. 'רשימת הרולי' — 42 ארמונות מהמאות 16-17 שאצילי גנואה הסכימו ביניהם לארח בהם אורחים כבוד. Via Garibaldi היא הרחוב השמור ביותר. Musei di Strada Nuova: 3 ארמונות פתוחים." },
   ]},
-  { city: "Torino", km: 125, sites: [
-    { name: "Intesa Sanpaolo Skyscraper", architect: "Renzo Piano Building Workshop", period: "Contemporary", prio: 3 },
-    { name: "Lingotto", architect: "Fiat; later Renzo Piano", period: "Adaptive reuse", prio: 3 },
-    { name: "Mole Antonelliana", architect: "Alessandro Antonelli", period: "19th century", prio: 3 },
-    { name: "Palazzo del Lavoro", architect: "Pier Luigi Nervi", period: "Modernism", prio: 3 },
-    { name: "Casa Mollino", architect: "Carlo Mollino", period: "20th century", prio: 2 },
+  { city: "Torino", km: 125, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Mole_Antonelliana_Turin.jpg&width=600", sites: [
+    { name: "Intesa Sanpaolo Skyscraper", architect: "Renzo Piano Building Workshop", period: "Contemporary", prio: 3, info:"2015, 167 מ׳. פיאנו יצר 'ריאה ירוקה' — גינה על הגג הנגישה לציבור, לצד יחידת כיבוי אש בתוך הבניין (תנאי מוניציפלי!). חזות זכוכית כפולה עם תאים פוטו-וולטאיים." },
+    { name: "Lingotto", architect: "Fiat; later Renzo Piano", period: "Adaptive reuse", prio: 3, info:"1923 — מפעל פיאט עם מסלול מבחן על הגג. 1989 — פיאנו הפך אותו לקניון, מלון, מרכז כנסים ו'מקסטה' — 'פינצ'רוטקה' (גלריה) שנתלית כקפסולה זכוכית על הגג. הגג-מסלול נשמר." },
+    { name: "Mole Antonelliana", architect: "Alessandro Antonelli", period: "19th century", prio: 3, info:"167 מ׳ — היה הגבוה בעולם עם סיומו ב-1889. אנטונלי החל לבנות כנסייה יהודית ב-1863, הקהילה נזנחה, עיריית טורינו השלימה. כיום — מוזיאון הקולנוע הטוב בעולם (אסור לפספס)." },
+    { name: "Palazzo del Lavoro", architect: "Pier Luigi Nervi", period: "Modernism", prio: 3, info:"1961 לתערוכת 'איטליה 100', 16 עמודי פטריה אדירים תומכים בגג ללא קירות פנימיים. נרווי בנה אותו ב-12 חודש בלבד. נחשב ל'מאסטרפיס' הסטאטי של המאה — גג 40,000 מ\"ר ללא תמיכה אמצעית." },
+    { name: "Casa Mollino", architect: "Carlo Mollino", period: "20th century", prio: 2, info:"אפרטמנט פרטי שמולינו עיצב ב-1960 לעצמו — אך לא גר בו מעולם. כולו עיצוב סרריאליסטי-ארוטי, נשמר בדיוק כפי שנבנה. ביקורים מוגבלים: רק דרך הזמנה מראש (Fondazione Mollino)." },
   ]},
-  { city: "Mantova", km: 129, sites: [
-    { name: "Palazzo Te", architect: "Giulio Romano", period: "Mannerism", prio: 3 },
-    { name: "San Sebastiano", architect: "Leon Battista Alberti", period: "Renaissance", prio: 3 },
-    { name: "Sant'Andrea", architect: "Leon Battista Alberti", period: "Renaissance", prio: 3 },
-    { name: "Casa del Mantegna", architect: "Andrea Mantegna", period: "Renaissance", prio: 2 },
-    { name: "Palazzo Ducale", architect: "Various", period: "Renaissance / Mannerism", prio: 2 },
+  { city: "Mantova", km: 129, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Palazzo_Te_Mantova.jpg&width=600", sites: [
+    { name: "Palazzo Te", architect: "Giulio Romano", period: "Mannerism", prio: 3, info:"1524–34, וילת קיץ לפדריקו II גונזאגה. גיוליו רומנו שבר בכוונה כל כלל קלאסי: טריגליפים 'נופלים', עמודים שמחוברים לא נכון. ה'חדר הגיגנטים' — ציורי קיר פנורמיים של ענקים נופלים — לא יוצאים מהראש." },
+    { name: "San Sebastiano", architect: "Leon Battista Alberti", period: "Renaissance", prio: 3, info:"1460, לא הושלם בחייו של אלברטי. ניסוי חד-פעמי: כנסייה בצורת צלב יווני (שווה), לא לטיני. הקריפטה מרהיבה. אלברטי התחבט בינה לבין הבזיליקה (שהיא גם שם) כמודל אידיאלי." },
+    { name: "Sant'Andrea", architect: "Leon Battista Alberti", period: "Renaissance", prio: 3, info:"1472, הגדולה מבין שתי כנסיות אלברטי במנטובה. חזית המשלבת קשת ניצחון רומאי עם היכל — המצאה שהפכה לכנסייה הקתולית הסטנדרטית לדורות. מנטנה קבור בקפלה הראשונה משמאל." },
+    { name: "Casa del Mantegna", architect: "Andrea Mantegna", period: "Renaissance", prio: 2, info:"1476, מנטניה תכנן לעצמו. חצר עגולה בתוך ריבוע — אלגוריה לשמיים ולאדמה. לא ברור אם מנטניה אכן גר בה. כיום חלל תרבות עם תערוכות זמניות." },
+    { name: "Palazzo Ducale", architect: "Various", period: "Renaissance / Mannerism", prio: 2, info:"מתחם ענק (500 חדרים!) ששלטוני גונזאגה הרחיבו מ-1328 עד 1707. ה'Camera degli Sposi' של מנטניה — ציורי תקרה אילוזיוניסטיים מ-1474 — חייב ביקור. הזמינו מקום מראש." },
   ]},
-  { city: "Verona", km: 140, sites: [
-    { name: "Castelvecchio", architect: "Carlo Scarpa", period: "Postwar", prio: 3 },
+  { city: "Verona", km: 140, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Castelvecchio_Museum%2C_Verona.jpg&width=600", sites: [
+    { name: "Castelvecchio", architect: "Carlo Scarpa", period: "Postwar", prio: 3, info:"1964, ההסבה של מוזיאון ורונה הישן. סקרפה יצר דיאלוג מדויק בין שאריות ימי-ביניים, תוספות ניאוגותיות ומרחבים עכשוויים. 'ציר הלפרטו'  — הפסל הרוכב ומסלולו — הוא שיעור מרוכז בתיאוריית מוזיאון." },
   ]},
-  { city: "Modena", km: 164, sites: [
-    { name: "Cathedral / Piazza Grande", architect: "Lanfranco", period: "Romanesque", prio: 3 },
-    { name: "San Cataldo Cemetery", architect: "Aldo Rossi", period: "Postwar", prio: 3 },
+  { city: "Modena", km: 164, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Modena_Piazza_Grande.jpg&width=600", sites: [
+    { name: "Cathedral / Piazza Grande", architect: "Lanfranco", period: "Romanesque", prio: 3, info:"UNESCO 1997. קתדרלה של 1099 שסיום בנייתה ב-1184. לנפרנקו ווילג'למו — בנאי ופסל — יצרו אחד המקבצים הרומנסקיים המושלמים. פיאצה גרנדה: בית עיר מהמאה ה-13 ממול. ריאזו מולינרי — מגדל הגלינה." },
+    { name: "San Cataldo Cemetery", architect: "Aldo Rossi", period: "Postwar", prio: 3, info:"1971, בית קברות שהפך לאייקון של הרציונליזם האיטלקי. רוסי תכנן 'עיר למתים' — כולל בית ריבועי ללא חלונות (עיריית המתים), גלריות ושדרות. בוצע חלקית; המקטע הבנוי מרהיב." },
   ]},
-  { city: "Vicenza", km: 184, sites: [
-    { name: "Basilica Palladiana", architect: "Andrea Palladio", period: "Palladian", prio: 3 },
-    { name: "La Rotonda", architect: "Andrea Palladio", period: "Palladian", prio: 3 },
-    { name: "Palazzo Barbaran da Porto", architect: "Andrea Palladio", period: "Palladian", prio: 3 },
-    { name: "Teatro Olimpico", architect: "Palladio / Scamozzi", period: "Palladian", prio: 3 },
-    { name: "Palazzo Chiericati", architect: "Andrea Palladio", period: "Palladian", prio: 2 },
+  { city: "Vicenza", km: 184, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/La_Rotonda_2.jpg&width=600", sites: [
+    { name: "Basilica Palladiana", architect: "Andrea Palladio", period: "Palladian", prio: 3, info:"1549, הזמנה ראשונה של פלאדיו בוויצ'נצה — 'לוגים' שמחפים בניין ישן. שם 'בזיליקה' שגוי (היה בית משפט), אך פלאדיו אהב את הכינוי. עולים לגג — נוף על הפיאצה ויוצאים לקפה בנגישות." },
+    { name: "La Rotonda", architect: "Andrea Palladio", period: "Palladian", prio: 3, info:"1566–1606, הפנתיאון הפרטי. ארבע חזיות זהות עם פורטיקו, כיפה מרכזית — אידיאל מאתמטי. השפיעה על כל ארמון אנגלי ממאה ה-18, כולל הבית הלבן. כיום בבעלות פרטית; פתוחה מרץ-נובמבר." },
+    { name: "Palazzo Barbaran da Porto", architect: "Andrea Palladio", period: "Palladian", prio: 3, info:"1569, עכשיו מוזיאון CISA (מרכז פלאדיו). פלאדיו גר כנראה כאן בשנותיו האחרונות. ספרייה מחקרית ותצוגות ראשיות על חייו. אם נמאס מכנסיות — כאן הסברים הכי טובים על שפת הסדרים." },
+    { name: "Teatro Olimpico", architect: "Palladio / Scamozzi", period: "Palladian", prio: 3, info:"1585, הבמה הישנה ביותר בעולם שנשמרה ועוד בשימוש. פלאדיו מת ב-1580, סקמוצ'י סיים ב-1585. הסצנוגרפיה האחורית (רחובות פרספקטיביים של תיבס) שוחזרה והיא אחד הפלאים הוויזואליים." },
+    { name: "Palazzo Chiericati", architect: "Andrea Palladio", period: "Palladian", prio: 2, info:"1550, עכשיו מוזיאון עירוני עם ציורים מהמאות 16-18. הלוג'יה הכפולה חריגה: הקומה הראשונה פתוחה לציבור, שנייה פרטית — חידוש ציבורי אורבני. מול Palazzo Chiericati יש פארק נוח לפיקניק." },
   ]},
-  { city: "Bologna", km: 201, sites: [
-    { name: "Porticoes of Bologna", architect: "Multiple", period: "Urbanism", prio: 3 },
-    { name: "Santo Stefano complex", architect: "Multiple", period: "Medieval", prio: 2 },
+  { city: "Bologna", km: 201, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Bologna_porticoes.jpg&width=600", sites: [
+    { name: "Porticoes of Bologna", architect: "Multiple", period: "Urbanism", prio: 3, info:"UNESCO 2021. 62 ק״מ של ארקדות עירוניות — הארוכות בעולם. מסדרון של 3.5 ק״מ מהעיר לסנטואריו דה לוקה. ראשיתן במאה ה-11 כתוספת לא חוקית לבתים — העיר הפכה אותן לחוק." },
+    { name: "Santo Stefano complex", architect: "Multiple", period: "Medieval", prio: 2, info:"מתחם של 7 כנסיות מהמאות 5-15, חלקן מבנים שפירסו ירושלים. ה'חצר של פילאטוס' — קנקן מרומן של 8ה מאה. אחד האתרים הכי 'סודיים' ואנינים בעיר." },
   ]},
-  { city: "Ferrara", km: 203, sites: [
-    { name: "Palazzo dei Diamanti", architect: "Biagio Rossetti", period: "Renaissance", prio: 3 },
+  { city: "Ferrara", km: 203, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Ferrara%2C_palazzo_dei_diamanti.jpg&width=600", sites: [
+    { name: "Palazzo dei Diamanti", architect: "Biagio Rossetti", period: "Renaissance", prio: 3, info:"1493, חזית של 8,500 אבני שיש פירמידלית שמשחקות אור כל שעה אחרת. רוסטי חישב את הזוויות המדויקות. פינת הבניין מסתובבת — עמודי Rusteca. כיום: גלריה לאמנות עם תערוכות זמניות." },
   ]},
-  { city: "Padova", km: 210, sites: [
-    { name: "Orto Botanico", architect: "Moroni / Barbaro", period: "Renaissance", prio: 3 },
-    { name: "Basilica di Sant'Antonio", architect: "Multiple", period: "Medieval / Renaissance", prio: 2 },
+  { city: "Padova", km: 210, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Orto_botanico_di_Padova.jpg&width=600", sites: [
+    { name: "Orto Botanico", architect: "Moroni / Barbaro", period: "Renaissance", prio: 3, info:"UNESCO 1997. הגן הבוטני האקדמי הישן בעולם (1545). עיגול במרכז ריבוע — מנדלה רינסצ'ימנטלית. 'עץ הגיתה' — דקל שגיתה מוזכר בשיריו — 200 שנה. פתוח לציבור, כניסה בתשלום." },
+    { name: "Basilica di Sant'Antonio", architect: "Multiple", period: "Medieval / Renaissance", prio: 2, info:"'Il Santo' — הכינוי המקומי. ציר 1231-1310, 8 כיפות ביזנטיות-פרנציסקניות ייחודיות. מאות אלפי עולי רגל שנה. הסנוטף של גטמלטה (דונאטלו) בחוץ — הפסל הפרשי הרנסאנסי הראשון." },
   ]},
-  { city: "Pisa", km: 216, sites: [
-    { name: "Piazza dei Miracoli", architect: "Multiple", period: "Romanesque", prio: 3 },
+  { city: "Pisa", km: 216, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Sziara.jpg&width=600", sites: [
+    { name: "Piazza dei Miracoli", architect: "Multiple", period: "Romanesque", prio: 3, info:"UNESCO 1987. ארבעה מבנים שיצרו 4 דורות — קתדרלה (1063), מגדל (1173), בפטיסטרו (1152), בית קברות (1278). כולם שיש לבן על דשא ירוק — 'פלדה' של ימי-ביניים. הכניסה לקתדרלה חינם; מגדל — בתשלום." },
   ]},
   { city: "San Vito d'Altivole", km: 220, sites: [
-    { name: "Brion Cemetery", architect: "Carlo Scarpa", period: "Postwar", prio: 3 },
+    { name: "Brion Cemetery", architect: "Carlo Scarpa", period: "Postwar", prio: 3, info:"1969–1978, מוזיאון ב-open air. סקרפה עיצב לעצמו קבר בפינה. הבריכה, הגשרון, הסרקופגים הכפולים של הזוג ברין — כל פרט בחישוב ותכנון של עשור. חובה לבוא עם מדריך — הסמלים נסתרים." },
   ]},
   { city: "Poggio a Caiano", km: 235, sites: [
-    { name: "Villa Medicea di Poggio a Caiano", architect: "Giuliano da Sangallo", period: "Renaissance", prio: 3 },
+    { name: "Villa Medicea di Poggio a Caiano", architect: "Giuliano da Sangallo", period: "Renaissance", prio: 3, info:"1485, הזמנה של לורנצו המגניפיקו. הוילה הרנסאנסית הראשונה שנבנתה כ'טיפוס' — עם פורטיקו, גרם מדרגות ובסיס מוגבה. טרקוטה על הטימפנון — אלגוריה של ירגוון על ידי ברונצינו." },
   ]},
-  { city: "Venezia", km: 245, sites: [
-    { name: "Basilica di San Marco", architect: "Multiple", period: "Byzantine / Gothic", prio: 3 },
-    { name: "Fondazione Querini Stampalia", architect: "Carlo Scarpa", period: "Postwar", prio: 3 },
-    { name: "Olivetti Showroom", architect: "Carlo Scarpa", period: "Postwar", prio: 3 },
-    { name: "Palazzo Ducale", architect: "Multiple", period: "Gothic", prio: 3 },
-    { name: "Punta della Dogana", architect: "Tadao Ando", period: "Adaptive reuse", prio: 3 },
-    { name: "San Giorgio Maggiore", architect: "Andrea Palladio", period: "Renaissance", prio: 3 },
-    { name: "Santa Maria della Salute", architect: "Baldassare Longhena", period: "Baroque", prio: 3 },
-    { name: "Procuratie Vecchie restoration", architect: "David Chipperfield", period: "Adaptive reuse", prio: 2 },
-    { name: "Teatro alle Tese", architect: "Tadao Ando", period: "Contemporary", prio: 2 },
-    { name: "Teatro del Mondo", architect: "Aldo Rossi", period: "Postwar", prio: 2 },
+  { city: "Venezia", km: 245, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Basilica_di_San_Marco_zlatna.jpg&width=600", sites: [
+    { name: "Basilica di San Marco", architect: "Multiple", period: "Byzantine / Gothic", prio: 3, info:"829, שוחזר 1063. 8,000 מ\"ר פסיפסים זהובים מהמאה ה-11 עד ה-18. הכנסייה הפרטית של הדוז'. ב-1797 נפוליאון שדד את הסוסים הברונזיים (מהמאה ה-3 לפנה'ס). קחו כרטיס מקוון — השורה ארוכה." },
+    { name: "Fondazione Querini Stampalia", architect: "Carlo Scarpa", period: "Postwar", prio: 3, info:"1963, הסבה של ארמון ונציאני ל-2 קומות תחתיות. סקרפה שילב מים (האגם נכנס בשיטפונות) כאלמנט עיצובי: תעלות ורמות שמנחות את הרגל. אחד המבנים הכי אינטנסיביים מבחינת פרט." },
+    { name: "Olivetti Showroom", architect: "Carlo Scarpa", period: "Postwar", prio: 3, info:"1958, חנות תצוגה קטנה (65 מ\"ר) בפיאצה סן מרקו. סקרפה חילק בזהירות ניהול מבקרים, אור וחומרים יקרים בסביבה עתיקה. כיום FAI שמרה אותה ופתחה שוב — חדר אחד, אחד הפנים הטובים בעולם." },
+    { name: "Palazzo Ducale", architect: "Multiple", period: "Gothic", prio: 3, info:"מאה 9-17. הגותיקה הוויניציאנית — קומה ראשונה: ארקדות; שנייה: לוג'יה; שלישית: קיר מוצק הפוך מהרגיל. גשר האנחות (1600) מחבר לכלא. חדר הגדול קונסיליו (1419): 60x25 מ׳ עם תקרת ציורים של טינטורטו." },
+    { name: "Punta della Dogana", architect: "Tadao Ando", period: "Adaptive reuse", prio: 3, info:"2009, מחסן מכס ונציאני (1677) הוסב על ידי אנדו לגלריה של פינו — אוסף אמנות עכשווית. אנדו השתמש רק בבטון חשוף ומינה שהוסיף לחלל. מיקום קצה הגרנד קנל — מרהיב." },
+    { name: "San Giorgio Maggiore", architect: "Andrea Palladio", period: "Renaissance", prio: 3, info:"1566–1610, מהצד שמול פלאצו דוקלה. פלאדיו פתר את בעיית הפגנת שתי 'קצות' — נאף לטינית ועמודי פורטיקו — ע״י שכבת חזיתות מוצגת. עלו לפעמון לנוף הטוב ביותר של ונציה." },
+    { name: "Santa Maria della Salute", architect: "Baldassare Longhena", period: "Baroque", prio: 3, info:"1631, נדר לאחר מגיפה. לונגנה — ונציאני — יצר בניין שמנצח על כניסת הגרנד קנל. 125,000 עמודי עץ באדמה כבסיס. הציר הפנימי המסתחרר — 2 אפסידות זזות — ייחודי לבארוק ונציאני." },
+    { name: "Procuratie Vecchie restoration", architect: "David Chipperfield", period: "Adaptive reuse", prio: 2, info:"2021, Chipperfield שחזר את הארקדות הישנות של פיאצה ס'מרקו לטובת 'The Human Safety Net' — מרכז חברתי של ג'נרלי. כניסה לגג — הנוף הרחב ביותר על הפיאצה." },
+    { name: "Teatro alle Tese", architect: "Tadao Ando", period: "Contemporary", prio: 2, info:"מחסן 17ה במאה שאנדו הסב לאולם תרבות בארסנלה. חלק מהביאנלה. אנדו שמר על הלבנים הישנות ועל הגג הישן, הוסיף בטון חשוף רק במינון. בדרך כלל פתוח רק בימי הביאנלה." },
+    { name: "Teatro del Mondo", architect: "Aldo Rossi", period: "Postwar", prio: 2, info:"1979, מבנה זמני לביאנלה שנסע על ספינה ונהרס. רוסי יצר מגדל אוקטוגונלי שנשמע כמו 'תמיד היה שם'. קיים רק בתמונות — אבל ההשפעה על ספרות אדריכלות הייתה ענקית." },
   ]},
-  { city: "Fiesole", km: 248, sites: [
-    { name: "Villa Medici", architect: "Michelozzo (attributed)", period: "Renaissance", prio: 3 },
+  { city: "Fiesole", km: 248, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Fiesole_panorama.jpg&width=600", sites: [
+    { name: "Villa Medici", architect: "Michelozzo (attributed)", period: "Renaissance", prio: 3, info:"1457, מיוחסת למיקלוצו עבור קוזימו ד'מדיצ'י. נוף מפהיק על פירנצה. לורנצו המגניפיקו כתב כאן חלק מיצירותיו. פרנסואה 1 מלך צרפת השתמש בה — ועל שמה נקראת וילה מדיצ'י ברומא." },
   ]},
-  { city: "Firenze", km: 249, sites: [
-    { name: "Boboli Gardens", architect: "Niccolò Tribolo / others", period: "Renaissance landscape", prio: 3 },
-    { name: "Duomo / Cupola", architect: "Filippo Brunelleschi", period: "Renaissance", prio: 3 },
-    { name: "Medici Chapels", architect: "Michelangelo / others", period: "Renaissance", prio: 3 },
-    { name: "Ospedale degli Innocenti", architect: "Filippo Brunelleschi", period: "Renaissance", prio: 3 },
-    { name: "Palazzo Medici Riccardi", architect: "Michelozzo", period: "Renaissance", prio: 3 },
-    { name: "Palazzo Pitti", architect: "Ammannati / others", period: "Renaissance / Baroque", prio: 3 },
-    { name: "Palazzo Rucellai", architect: "Leon Battista Alberti", period: "Renaissance", prio: 3 },
-    { name: "Palazzo Vecchio", architect: "Arnolfo di Cambio", period: "Medieval / Renaissance", prio: 3 },
-    { name: "Pazzi Chapel", architect: "Filippo Brunelleschi", period: "Renaissance", prio: 3 },
-    { name: "San Lorenzo", architect: "Filippo Brunelleschi", period: "Renaissance", prio: 3 },
-    { name: "San Miniato al Monte", architect: "Various", period: "Romanesque", prio: 3 },
-    { name: "Santa Maria Novella", architect: "Leon Battista Alberti", period: "Renaissance", prio: 3 },
-    { name: "Uffizi Gallery", architect: "Giorgio Vasari", period: "Renaissance", prio: 3 },
+  { city: "Firenze", km: 249, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Firenze_cupola.jpg&width=600", sites: [
+    { name: "Boboli Gardens", architect: "Niccolò Tribolo / others", period: "Renaissance landscape", prio: 3, info:"1550, הגן המדורג האייקוני מאחורי פאלאצו פיטי. 45,000 מ\"ר מגזרות, פסלים ואלמוגות. אמפיתיאטר ענק לצד פונטה הים. כניסה בתשלום, מומלץ בוקר מוקדם — מתמלא עד הצהריים." },
+    { name: "Duomo / Cupola", architect: "Filippo Brunelleschi", period: "Renaissance", prio: 3, info:"1436, הכיפה הגדולה ביותר בעולם שנבנתה ללא פיגומים — ברונלסקי המציא שיטת לבנים 'ספינה' (herringbone). עלו ל-463 מדרגות — בין הכיפה הפנימית לחיצונית — חוויה ארכיטקטונית ייחודית בעולם." },
+    { name: "Medici Chapels", architect: "Michelangelo / others", period: "Renaissance", prio: 3, info:"קפלת הנסיכים (1604) ו'קפלה נובה' של מיכאלאנג'לו (1524). הסרקופגים של אורבינו ו-נמורס עם ארבע האלגוריות (ליל/יום/בוקר/ערב) — הפסל האנושי הכי עמוק שמיכאלאנג'לו עשה." },
+    { name: "Ospedale degli Innocenti", architect: "Filippo Brunelleschi", period: "Renaissance", prio: 3, info:"1419–1445, בית יתומים — הבניין הרנסאנסי הראשון בפירנצה. עמודות קורינתיות בארקדה, תקרות מקומרות — שפה שברונלסקי 'חשף' מהאנטיקה הרומאית. עדיין פעיל כמרכז לאוניצ'ף." },
+    { name: "Palazzo Medici Riccardi", architect: "Michelozzo", period: "Renaissance", prio: 3, info:"1444, הארמון הפרטי הראשון של ימי הרנסאנס בפירנצה. חצר פנימית טיפוסית, חלוקת קומות בסדרים (בוסטה, רוסטיקה, חלק) — מודל שכולם העתיקו. הקפלה: ציורי גוצ'ולי של מסע המגים." },
+    { name: "Palazzo Pitti", architect: "Ammannati / others", period: "Renaissance / Baroque", prio: 3, info:"1457, רכשו המדיצ'י ב-1549, הפכו לארמון המלכותי. אמאנאטי הרחיב עם חצר פנימית ממונומנטלית. 5 מוזיאונים בתוכו (כולל גלריה פאלאטינה עם ציורי ראפאל). כניסה יחידה לכולם." },
+    { name: "Palazzo Rucellai", architect: "Leon Battista Alberti", period: "Renaissance", prio: 3, info:"1446–1451, הניסוי הפרטי הראשון של אלברטי. שלוש שורות עמודים שטוחים (פילסטרים) מחלקות קומות — כמו הקולוסאום. לא נגמר (חסרות שתי ביי). כיום: בית פרטי, לא נכנסים." },
+    { name: "Palazzo Vecchio", architect: "Arnolfo di Cambio", period: "Medieval / Renaissance", prio: 3, info:"1299–1314, עם מגדל 95 מ׳. מאז 1540 ניצחו המדיצ'י מכאן. ה'סאלה דיי צ'ינקוצ'נטו' — ציורי קרב של וזארי על 2,000 מ\"ר — חיסו ציור 'אנגיארי' של דה וינצ'י (שריד?). כיום עיריית פירנצה." },
+    { name: "Pazzi Chapel", architect: "Filippo Brunelleschi", period: "Renaissance", prio: 3, info:"1441–1478, קפלת משפחה בחצר סנטה קרוצ'ה. ברונלסקי במיטבו: יחסים מתמטיים מדויקים, עיגולים בריבועים, טרקוטות של לוקה דלה רוביה. אחד החדרים הכי 'שלמים' שנבנו." },
+    { name: "San Lorenzo", architect: "Filippo Brunelleschi", period: "Renaissance", prio: 3, info:"1421, כנסיית המדיצ'י — ברונלסקי עיצב את הבזיליקה, מיכאלאנג'לו את הספרייה הלורנציאנה. ספריית לורנצו: מדרגות 'נוזלות' מפורסמות, ממוצא מוקדם של פרוטו-מנייריזם." },
+    { name: "San Miniato al Monte", architect: "Various", period: "Romanesque", prio: 3, info:"1018–1207, כנסייה רומנסקית על גבעה מעל פירנצה — נוף הטוב ביותר בשקיעה. חזית שיש ירוק-לבן מ-1090. ה'Sagrestia del Cardinale of Portugal' — קפלה מ-1461 עם כל הפסל, הציור והקרמיקה מהרנסאנס." },
+    { name: "Santa Maria Novella", architect: "Leon Battista Alberti", period: "Renaissance", prio: 3, info:"1456–1470, חזית חדשה על כנסייה דומיניקנית ישנה. אלברטי יצר חזית עם volutes (גלילים) שמחברים רוחב לגובה — פתרון שהועתק 500 שנה. פנים: טרינידד קדושה של מזאצ'ו (1427) — הפרספקטיבה הציורית הראשונה." },
+    { name: "Uffizi Gallery", architect: "Giorgio Vasari", period: "Renaissance", prio: 3, info:"1560, משרדי הממשל של קוזימו 1 (uffizi = offices). הפך למוזיאון ב-1591. ה'Vasari Corridor' — מסדרון מעל פונטה וקיו — מחבר ל-פאלאצו פיטי. הזמינו כרטיסים 2 שבועות מראש מינימום." },
   ]},
-  { city: "Ravenna", km: 263, sites: [
-    { name: "Basilica di San Vitale", architect: "Unknown / Byzantine", period: "Late Antique", prio: 3 },
-    { name: "Mausoleum of Galla Placidia", architect: "Unknown", period: "Late Antique", prio: 3 },
+  { city: "Ravenna", km: 263, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Basilica_di_San_Vitale_-_Ravenna.jpg&width=600", sites: [
+    { name: "Basilica di San Vitale", architect: "Unknown / Byzantine", period: "Late Antique", prio: 3, info:"547, UNESCO 1996. הפסיפסים הביזנטיים הטובים ביותר מחוץ לקונסטנטינופול. הפנל של יוסטיניאנוס ותיאודורה — דיוקן פוליטי-דתי עם 'הילה דיפלומטית'. חלל אוקטוגונלי ייחודי, חומרים מביזנטיון." },
+    { name: "Mausoleum of Galla Placidia", architect: "Unknown", period: "Late Antique", prio: 3, info:"430, הפסיפסים הקדומים ביותר ב-Ravenna. כיפה: 800 כוכבי זהב על שמיים כחולים עמוקים. ה'אצטרוב הרועה הטוב' (The Good Shepherd) — אחד הדימויים הנוצרים הקדומים ביותר שנשמרו." },
   ]},
-  { city: "Siena", km: 293, sites: [
-    { name: "Palazzo Pubblico", architect: "Various", period: "Medieval Gothic", prio: 3 },
-    { name: "Piazza del Campo", architect: "Medieval civic urbanism", period: "Medieval urbanism", prio: 3 },
-    { name: "Siena Cathedral (Duomo)", architect: "Giovanni Pisano / others", period: "Italian Gothic", prio: 3 },
+  { city: "Siena", km: 293, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Siena_Piazza_del_Campo.jpg&width=600", sites: [
+    { name: "Palazzo Pubblico", architect: "Various", period: "Medieval Gothic", prio: 3, info:"1297–1342, בית העיר הסיינזי עם מגדל מנג'ה (102 מ׳). הסאלה דל מפמנדו עם 'Allegoria del Buon Governo' של לורנצטי (1338–1339) — הציור הפוליטי החשוב ביותר של ימי-הביניים. עדיין משרדי עיר." },
+    { name: "Piazza del Campo", architect: "Medieval civic urbanism", period: "Medieval urbanism", prio: 3, info:"מאה ה-13, פיה שאן-ייחודית בעולם: ריצוף שניה של 9 מגזרות ('סמנטל') וגן מוטה כלפי פאלאצו פובליקו. 'פאליו' — מירוץ הסוסים — 2 פעמים בשנה. בשאר הזמן — חיים עירוניים מושלמים." },
+    { name: "Siena Cathedral (Duomo)", architect: "Giovanni Pisano / others", period: "Italian Gothic", prio: 3, info:"1215–1370. פיזאנו פיסל את 34 הפסלים החיצוניים (עותקים — מקוריים במוזיאון). הרצפה הפנימית: 56 לוחות שיש שנחשפים רק באוגוסט-ספטמבר. 'Piccolomini Library' בתוכה — פינטוריקיו מהמם." },
   ]},
-  { city: "Rimini", km: 309, sites: [
-    { name: "Tempio Malatestiano", architect: "Leon Battista Alberti", period: "Renaissance", prio: 3 },
+  { city: "Rimini", km: 309, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Tempio_Malatestiano_Rimini.jpg&width=600", sites: [
+    { name: "Tempio Malatestiano", architect: "Leon Battista Alberti", period: "Renaissance", prio: 3, info:"1450, 'מקדש' שאלברטי עיצב על כנסייה גותית לסיגיסמונדו מאלאטסטה. אלברטי עטף קירות ישנים בשיש כמו הפנתיאון — בלי להרוס. שיקוף הקשת ניצחון עתיקה מול הכנסייה. לא הושלם." },
   ]},
-  { city: "Pienza", km: 331, sites: [
-    { name: "Piazza Pio II", architect: "Bernardo Rossellino", period: "Renaissance urbanism", prio: 3 },
+  { city: "Pienza", km: 331, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Pienza_piazza.jpg&width=600", sites: [
+    { name: "Piazza Pio II", architect: "Bernardo Rossellino", period: "Renaissance urbanism", prio: 3, info:"UNESCO 1996. 1459–1462 — האפיפיור פיוס ה-2 הזמין עיר אידיאלית בכפרו. רוסלינו תכנן פיאצה, קתדרלה, ארמון עם נוף ל-Val d'Orcia. הכל נבנה ב-3 שנים. אחד הפרויקטים הרנסאנסיים ה'טהורים' ביותר." },
   ]},
-  { city: "Urbino", km: 334, sites: [
-    { name: "Palazzo Ducale", architect: "Laurana / Francesco di Giorgio", period: "Renaissance", prio: 3 },
+  { city: "Urbino", km: 334, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Urbino_Ducal_Palace.jpg&width=600", sites: [
+    { name: "Palazzo Ducale", architect: "Laurana / Francesco di Giorgio", period: "Renaissance", prio: 3, info:"1468–1482, של פדריקו דה מונטפלטרו — הנסיך-האומן הגדול ביותר של הרנסאנס. לאורנה (דלמטי) ופרנצ'סקו די ג'ורג'יו יצרו חלל אינטלקטואלי מושלם. 'Studiolo' — חדר עבודה עם intarsia (פסיפס עץ) שמדמה ספרייה." },
   ]},
-  { city: "Assisi", km: 381, sites: [
-    { name: "Basilica di San Francesco", architect: "Multiple", period: "Medieval", prio: 3 },
+  { city: "Assisi", km: 381, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Assisi_Basilica_di_San_Francesco.jpg&width=600", sites: [
+    { name: "Basilica di San Francesco", architect: "Multiple", period: "Medieval", prio: 3, info:"UNESCO 2000. שתי כנסיות (עליונה 1230, תחתונה 1228) המוני חלל. הציורי קיר של ג'וטו בעליונה (1297–1300) — המהפכה של 'אנשים בחלל תלת-מימדי'. רעידת אדמה 1997 הרסה חלקים; שוחזרה." },
   ]},
-  { city: "Roma", km: 473, sites: [
-    { name: "Casa del Girasole", architect: "Luigi Moretti", period: "20th century", prio: 3 },
-    { name: "EUR Congress Palace", architect: "Adalberto Libera", period: "Rationalism", prio: 3 },
-    { name: "Il Gesù", architect: "Vignola / della Porta", period: "Mannerism / Baroque", prio: 3 },
-    { name: "Jubilee Church", architect: "Richard Meier", period: "Contemporary", prio: 3 },
-    { name: "MAXXI", architect: "Zaha Hadid", period: "Contemporary", prio: 3 },
-    { name: "Palazzetto dello Sport", architect: "Pier Luigi Nervi", period: "Modernism", prio: 3 },
-    { name: "Palazzo Farnese", architect: "Sangallo / Michelangelo", period: "Renaissance", prio: 3 },
-    { name: "Palazzo della Civiltà Italiana", architect: "Guerrini / La Padula / Romano", period: "20th century", prio: 3 },
-    { name: "Pantheon", architect: "Ancient Rome", period: "Ancient", prio: 3 },
-    { name: "Piazza San Pietro", architect: "Gian Lorenzo Bernini", period: "Baroque", prio: 3 },
-    { name: "Piazza del Campidoglio", architect: "Michelangelo", period: "Renaissance", prio: 3 },
-    { name: "San Carlo alle Quattro Fontane", architect: "Francesco Borromini", period: "Baroque", prio: 3 },
-    { name: "Sant'Andrea al Quirinale", architect: "Gian Lorenzo Bernini", period: "Baroque", prio: 3 },
-    { name: "Sant'Ivo alla Sapienza", architect: "Francesco Borromini", period: "Baroque", prio: 3 },
-    { name: "St Peter's Basilica", architect: "Bramante / Michelangelo / Bernini", period: "Renaissance / Baroque", prio: 3 },
-    { name: "Stadio Flaminio", architect: "Pier Luigi Nervi / Antonio Nervi", period: "Modernism", prio: 3 },
-    { name: "Tempietto di San Pietro in Montorio", architect: "Donato Bramante", period: "High Renaissance", prio: 3 },
-    { name: "Ara Pacis Museum", architect: "Richard Meier", period: "Contemporary", prio: 2 },
-    { name: "Auditorium Parco della Musica", architect: "Renzo Piano", period: "Contemporary", prio: 2 },
-    { name: "Galleria Nazionale d'Arte Moderna", architect: "Cesare Bazzani", period: "20th century", prio: 2 },
-    { name: "Nuvola Convention Centre", architect: "Massimiliano Fuksas", period: "Contemporary", prio: 2 },
-    { name: "Sant'Andrea della Valle", architect: "della Porta / Maderno", period: "Baroque", prio: 2 },
-    { name: "Santa Maria in Trastevere", architect: "Multiple", period: "Medieval", prio: 2 },
+  { city: "Roma", km: 473, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Colosseum_in_Rome%2C_Italy_-_April_2007.jpg&width=600", sites: [
+    { name: "Casa del Girasole", architect: "Luigi Moretti", period: "20th century", prio: 3, info:"1950, ויה פינצ'אנה. שתי בלוקים תאומים עם חריץ מרכזי מרשים — מורטי 'חתך' בניין שהיה אחד. מודרניזם איטלקי שמתגרה עם פשיזם ועם ראציונליזם כאחד. לא פתוח לציבור, ראו מהחוץ." },
+    { name: "EUR Congress Palace", architect: "Adalberto Libera", period: "Rationalism", prio: 3, info:"1953 (לתערוכה שבוטלה עקב המלחמה ב-1942). ליברה יצר פסאד 'כנגד הגוף' — קשת ענקית חיצונית שמסכנת את הפנים. אחד הבניינים הציבוריים הכי נועזים של הרציונליזם האיטלקי." },
+    { name: "Il Gesù", architect: "Vignola / della Porta", period: "Mannerism / Baroque", prio: 3, info:"1568–1584, 'אם כל הכנסיות הישועיות'. ויניולה עיצב את הנאו — נאף רחב ללא סמוכים, קפלות צדדיות במקום אייסלים — מודל שאומץ בכל קתוליקת אירופה. תקרת ה-'triumph of the name of Jesus' (בצ'ו) מרשימה." },
+    { name: "Jubilee Church", architect: "Richard Meier", period: "Contemporary", prio: 3, info:"2003 (לשנת היובל 2000, אחרי עיכובים). מאייר הניח 3 קונכיות בטון לבן-טהור כנגד שמיים. ניסוי חומרי: בטון עם TiO2 שמנקה את עצמו מזיהום. בשכונת Tor Tre Teste, לא פאנסיסטי — תתאמצו להגיע." },
+    { name: "MAXXI", architect: "Zaha Hadid", period: "Contemporary", prio: 3, info:"2010, מוזיאון לאמנות ואדריכלות עכשווית. האדיד יצרה 'נהרות' של גלריות שמשתזרות. תקרות-אור מוטות, מסלולים מרובים ללא 'כניסה' ברורה. הבניין עצמו חורג מהאמנות. כניסה בתשלום." },
+    { name: "Palazzetto dello Sport", architect: "Pier Luigi Nervi", period: "Modernism", prio: 3, info:"1958 לאולימפיאדה 1960. כיפה מ-prefab קונקרט של 58.5 מ׳ קוטר, נתמכת ב-36 פילונים אלכסוניים — נרווי פתר את הסטאטיקה בדרך שאף מהנדס לא ציפה. יוסב כעת לאולם 12,000 מקומות." },
+    { name: "Palazzo Farnese", architect: "Sangallo / Michelangelo", period: "Renaissance", prio: 3, info:"1517–1589, הארמון הרנסאנסי הגדול ביותר ברומא. סנגלו (Sr) ואח'כ מיכאלאנג'לו שינה את הקורניש — 'סוגר' החזית בחוצפה. כיום שגרירות צרפת. ביקורים ביום שני ורביעי בלבד (הרשמה מוקדמת)." },
+    { name: "Palazzo della Civiltà Italiana", architect: "Guerrini / La Padula / Romano", period: "20th century", prio: 3, info:"1943 ('קולוסאום הריבועי'). 6 קומות, 54 קשתות בכל צד — שתמיד מסתכם ל-9 (ספרות שם של מוסוליני). פשיזם-קלאסיציזם מושלם ומאיים. כיום: בית Fendi. ביקורים מתוזמנים בימי שבת." },
+    { name: "Pantheon", architect: "Ancient Rome", period: "Ancient", prio: 3, info:"125 לספירה (ע\"ש אגריפה, 27 לפנ'ס). כיפה 43.3 מ׳ — הגדולה בעולם 1300 שנה. ה'אוקולוס' (9 מ׳) היחיד — שום חלון אחר. כניסה דרש — כיום 5€. פנתאון הוסב לכנסייה ב-609." },
+    { name: "Piazza San Pietro", architect: "Gian Lorenzo Bernini", period: "Baroque", prio: 3, info:"1656–1667. ברניני תכנן קולונאדה אליפטית 'מחבקת' — אמר שהכנסייה 'פותחת ידיים' לקבל קתולים ולהחזיר כופרים. המשקולת (obelisk) עתיקה, הובאה מהיפודרום של קליגולה." },
+    { name: "Piazza del Campidoglio", architect: "Michelangelo", period: "Renaissance", prio: 3, info:"1536, תכנון; בוצע עד 1654. מיכאלאנג'לו ניגש לכיכר הטרפז בטכניקה: הרחיב אחד הקצרים בפרספקטיבה מדומה. הרצפה האליפטית תוכננה למרכוס אורליוס. פסל הפרש — העתק; מקורי בתוך המוזיאון." },
+    { name: "San Carlo alle Quattro Fontane", architect: "Francesco Borromini", period: "Baroque", prio: 3, info:"1638–1641, כנסיית הנזירים הקטנה ביותר ברומא. בורומיני שיחק עם גאומטריה מורכבת: אליפסות, אצטדיון ומשולש שנמסכים. כיפה שחולפת ב-'אינסוף'. ביני לברניני — יריבות אדריכלית היסטורית." },
+    { name: "Sant'Andrea al Quirinale", architect: "Gian Lorenzo Bernini", period: "Baroque", prio: 3, info:"1661–1678, ברניני הגדיר כ'יחידה שלמה'. אליפסה על הציר הרוחבי (לא האורכי) — הכנסייה ה'שמנה'. 'עלייה לשמיים' — האפקט של פסל סנט אנדריאה שמסתכל על ציורי הכיפה — מחשבה חושית אמינה." },
+    { name: "Sant'Ivo alla Sapienza", architect: "Francesco Borromini", period: "Baroque", prio: 3, info:"1642–1660, קפלת האוניברסיטה. פלן מבוסס שני משולשים שמוטחים ויוצרים 6 נקודות. ה'לנטרן' הספירלי של המגדל — ייחודי בעולם. מוכנסת לחצר מלבנית — הניגוד מדהים." },
+    { name: "St Peter's Basilica", architect: "Bramante / Michelangelo / Bernini", period: "Renaissance / Baroque", prio: 3, info:"1506–1626, 120 שנה, 20 אדריכלים. ברמנטה תכנן כיפה, מיכאלאנג'לו סיים אותה (1564, מת בשנת הבנייה). מדינאטו הוסיף נאו (1614). עלו לכיפה (551 מדרגות) — נוף על ברניני פיאצה." },
+    { name: "Stadio Flaminio", architect: "Pier Luigi Nervi / Antonio Nervi", period: "Modernism", prio: 3, info:"1959 לאולימפיאדה 1960. גג ה'V' של הגגון המרכזי — פתרון מבריק: המאמץ מוסט לשני קצות. נרווי ובנו שיתפו פעולה. עזוב ומתפורר כיום — מאבק להרשם כמורשת." },
+    { name: "Tempietto di San Pietro in Montorio", architect: "Donato Bramante", period: "High Renaissance", prio: 3, info:"1502, מקום עיכוב הצליבה של פטרוס לפי מסורת. ברמנטה יצר 'קדוש הקדשים' של הרנסאנס: מעגל מושלם, עמודות דוריות, כיפה. פלאדיו חקר אותו עשרות שנים. בחצר סן פייטרו אין מפליסיו." },
+    { name: "Ara Pacis Museum", architect: "Richard Meier", period: "Contemporary", prio: 2, info:"2006, בית זכוכית לאלטר אוגוסטוס (9 לפנ'ס). מאייר עיצב ב'לבן מאייר' המזוהה — שנוי במחלוקת לחלוטין בפורום רומא. ראש עיר 1990s שנה דעה רק אחרי הפתיחה. לא יסגרו — בית המשפט דחה." },
+    { name: "Auditorium Parco della Musica", architect: "Renzo Piano", period: "Contemporary", prio: 2, info:"2002, 3 'חרקים' (עטלפים? צבים?) — אולמות 2756, 1215 ו-678 מקומות. פיאנו ניגש לאקוסטיקה: צורות נגזרות מהתיאוריה — ולא רק אסתטיקה. בגן בחוץ: וילה 3 מהמאה ה-2 שנמצאה בחפירות." },
+    { name: "Galleria Nazionale d'Arte Moderna", architect: "Cesare Bazzani", period: "20th century", prio: 2, info:"1911, גלריה לאמנות ב-Valle Giulia. 20,000 יצירות מהמאות 19-20. הקרביולו בסביב הורגיה. הגלריה פחות ידועה ממה שמגיעה לה — תורים קצרים יחסית." },
+    { name: "Nuvola Convention Centre", architect: "Massimiliano Fuksas", period: "Contemporary", prio: 2, info:"2016, ב-EUR. ענן פלדה-זכוכית 'מרחף' בתוך בועת נירוסטה ענקית. 17 שנות בנייה, 239 מיליון יורו. פוקסאס הגדיר: 'ענן ב-בקבוק'. עכשיו פתוח לאירועים." },
+    { name: "Sant'Andrea della Valle", architect: "della Porta / Maderno", period: "Baroque", prio: 2, info:"1608–1655, הכנסייה בה מתחיל מערכת א של 'טוסקה'. חזית ב-2 קומות — מאדרנו. כיפה שנייה בגודלה ברומא (אחרי סן פייטרו). קפלה פארנזה בפנים: ציורי קיר של דומניקינו." },
+    { name: "Santa Maria in Trastevere", architect: "Multiple", period: "Medieval", prio: 2, info:"340 לספירה (מהראשונות ברומא), שוחזרה 1138–1148. פסיפסי הזהב בחוץ ובפנים — ייחודיים לרומא. Piazza di Santa Maria in Trastevere — הכי נעימה בשכונה. פתוחה 24/7." },
   ]},
-  { city: "Tivoli", km: 485, sites: [
-    { name: "Villa Adriana", architect: "Ancient Roman", period: "Ancient", prio: 3 },
-    { name: "Villa d'Este", architect: "Pirro Ligorio", period: "Renaissance", prio: 3 },
+  { city: "Tivoli", km: 485, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Villa_d%27Este_-_Tivoli.jpg&width=600", sites: [
+    { name: "Villa Adriana", architect: "Ancient Roman", period: "Ancient", prio: 3, info:"UNESCO 1999. 118–134 לספירה, 120 דונם — הוילה הקיסרית הגדולה ביותר שנבנתה. הדריאנוס שחזר בה מקומות מסעיו (Canopus מאלכסנדריה, Stoa מאתונה). חצי יום מינימום. בבוקר מוקדם — כמעט ריק." },
+    { name: "Villa d'Este", architect: "Pirro Ligorio", period: "Renaissance", prio: 3, info:"UNESCO 2001. 1560–1572. ליגוריו יצר גן מפלים ומזרקות עם לחץ כבידה בלבד — בלי משאבות. 500 מזרקות, 220 אגנים. ה'צינורות האורגן' (Fontana dell'organo) מנגנות בלחץ מים. הזמינו כרטיסים." },
   ]},
-  { city: "Caserta", km: 641, sites: [
-    { name: "Royal Palace of Caserta", architect: "Luigi Vanvitelli", period: "18th century", prio: 3 },
+  { city: "Caserta", km: 641, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Reggia_di_Caserta_-_panoramic_view.jpg&width=600", sites: [
+    { name: "Royal Palace of Caserta", architect: "Luigi Vanvitelli", period: "18th century", prio: 3, info:"UNESCO 1997. 1752–1847, ארמון הגדול מוורסאי. ואנוויטלי תכנן 1,200 חדרים, 34 קמ של ציר, גינות ממוזרקות. ה'מפל' בסוף הצינור הישר: 78 מ׳ גובה. הסרטו כאן את 'Star Wars Episode 1'. " },
   ]},
-  { city: "Napoli", km: 657, sites: [
-    { name: "Museo Madre", architect: "Álvaro Siza / others", period: "Adaptive reuse", prio: 2 },
-    { name: "Stazione Toledo", architect: "Oscar Tusquets Blanca", period: "Contemporary", prio: 2 },
+  { city: "Napoli", km: 657, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Napoli_BW_2013-05-16_15-29-06.jpg&width=600", sites: [
+    { name: "Museo Madre", architect: "Álvaro Siza / others", period: "Adaptive reuse", prio: 2, info:"2005, Siza ו-Chipperfield עיצבו מוזיאון בארמון נאפוליטני. אוסף אמנות עכשווית דרומי-איטלקי. הגינה הפנימית השקטה — ניגוד מרענן לכאוס נפולי שבחוץ." },
+    { name: "Stazione Toledo", architect: "Oscar Tusquets Blanca", period: "Contemporary", prio: 2, info:"2012. תחנת מטרו — אחת מ'6 האמנותיות בעולם' לפי CNN. ציפוי פסיפסים כחול-ים עמוק שמתאיר ועולה לכיוון האור. 'Crater de Luz' — האוקולוס הגדול בכניסה. 40 מ׳ מתחת לפני הקרקע." },
   ]},
-  { city: "Pompei", km: 678, sites: [
-    { name: "Pompeii Archaeological Park", architect: "Ancient Roman", period: "Ancient", prio: 3 },
+  { city: "Pompei", km: 678, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Pompei_2012.jpg&width=600", sites: [
+    { name: "Pompeii Archaeological Park", architect: "Ancient Roman", period: "Ancient", prio: 3, info:"UNESCO 1997. 79 לספירה — עיר שנקברה תחת אפר ווזוב ב-24 שעות. 44 הקטרים גלויים (2/3 מהעיר). Villa dei Misteri: ציורי קיר מ-60 לפנ'ס בשלמותם. הגיעו בפתיחה (9:00) לפני ההמונים." },
   ]},
-  { city: "Paestum", km: 733, sites: [
-    { name: "Greek Temples of Paestum", architect: "Ancient Greek", period: "Ancient", prio: 3 },
+  { city: "Paestum", km: 733, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Paestum_HDR.jpg&width=600", sites: [
+    { name: "Greek Temples of Paestum", architect: "Ancient Greek", period: "Ancient", prio: 3, info:"550–450 לפנ'ס, שלושה מקדשים שנשמרו יותר מכל יוון (כי נדחו). הרה 1 (550): הכי ישן, בסדר דורי. פוסייידון (440): הכי שמור. הרה 2 (470) ביניהם. מוזיאון בצד: 'הצלל' (frieze of the diver) — ציור מ-480 לפנ'ס." },
   ]},
-  { city: "Matera", km: 804, sites: [
-    { name: "Sassi di Matera", architect: "Multiple", period: "Historic / vernacular", prio: 3 },
+  { city: "Matera", km: 804, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Sassi_di_Matera.jpg&width=600", sites: [
+    { name: "Sassi di Matera", architect: "Multiple", period: "Historic / vernacular", prio: 3, info:"UNESCO 1993. עיר מחצובה בסלע עם 9,000 שנות יישוב — אחד הישובים הישנים בעולם. פינו לפני 1950, שוב מאוכלס מ-1980s כהוסטלים ומלונות. Matera 2019 בירת תרבות אירופאית. הגיעו בזריחה." },
   ]},
-  { city: "Alberobello", km: 834, sites: [
-    { name: "Trulli", architect: "Vernacular", period: "Historic / vernacular", prio: 2 },
+  { city: "Alberobello", km: 834, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Alberobello_Trulli.jpg&width=600", sites: [
+    { name: "Trulli", architect: "Vernacular", period: "Historic / vernacular", prio: 2, info:"UNESCO 1996. 1,500 טרולי — בתים קוניים מסיד לבן ואבן אפורה. עוצבו ב-15ה-16ה למאה כך שניתן לפרקם מהר לפני פקחי המס (ללא מלט). Rione Monti — הריכוז הצפוף. אפשר לישון בטרולו." },
   ]},
-  { city: "Palermo", km: 887, sites: [
-    { name: "Cattedrale di Palermo", architect: "Multiple", period: "Arab-Norman", prio: 3 },
-    { name: "Palazzo Abatellis", architect: "Matteo Carnilivari", period: "Gothic / Renaissance", prio: 3 },
-    { name: "Palazzo dei Normanni / Cappella Palatina", architect: "Multiple", period: "Norman / Byzantine", prio: 3 },
+  { city: "Palermo", km: 887, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Palermo_Cathedral_-_West_facade.jpg&width=600", sites: [
+    { name: "Cattedrale di Palermo", architect: "Multiple", period: "Arab-Norman", prio: 3, info:"1185, מדהישה בשכבות: מסגד ערבי שהפך לקתדרלה נורמנית, תוספות גותיות, ארקדות מוריות וכיפה ניאו-קלאסית מ-1801 (פיה). ראו את הסמכות הרב-תרבותיות בחלונות ובקמרות. קבר פרידריך ה-2 שם." },
+    { name: "Palazzo Abatellis", architect: "Matteo Carnilivari", period: "Gothic / Renaissance", prio: 3, info:"1490–1495, ניסיון של Carnilivari לשלב גותי ספרדי (Catalan Gothic) עם רנסאנס. כיום גלריה אזורית — כולל 'Triumph of Death' (פרסקו עצום מ-1440) ו'Annunziazione' של אנטונלו דה מסינה." },
+    { name: "Palazzo dei Normanni / Cappella Palatina", architect: "Multiple", period: "Norman / Byzantine", prio: 3, info:"Cappella Palatina — 1130–1143, ממוצא של רוג'ר 2. פסיפסים ביזנטיים, קמרות ערביות (muqarnas), בסיס נורמני — 3 תרבויות בחדר אחד. 'הנס הסיציליאני'. כנסת סיציליה שם — כניסה מוגבלת." },
   ]},
-  { city: "Monreale", km: 888, sites: [
-    { name: "Duomo di Monreale", architect: "Multiple", period: "Arab-Norman", prio: 3 },
+  { city: "Monreale", km: 888, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Duomo_di_Monreale.jpg&width=600", sites: [
+    { name: "Duomo di Monreale", architect: "Multiple", period: "Arab-Norman", prio: 3, info:"1174–1182, של וויליאם ה-2. 6,340 מ\"ר פסיפסים זהובים — הגדול ביותר בעולם. הChristo Pantocrator (גדול על הכסת הראשי) — 13 מ׳ גובה. ה'כיתרים' המוריים בעמודי הקלויסטר — מונתאן הכי מרהיב מ'קולטורה נורמנה'." },
   ]},
-  { city: "Agrigento", km: 980, sites: [
-    { name: "Valley of the Temples", architect: "Ancient Greek", period: "Ancient", prio: 3 },
+  { city: "Agrigento", km: 980, img:"https://en.wikipedia.org/w/index.php?title=Special:Redirect/file/Agrigento-Valle_dei_Templi.jpg&width=600", sites: [
+    { name: "Valley of the Temples", architect: "Ancient Greek", period: "Ancient", prio: 3, info:"UNESCO 1997. 430–440 לפנ'ס, 7 מקדשים על כביש ה-1 ק\"מ. Concordia — הכי שמור מחוץ ליוון (הוסב לכנסייה ב-6ה). Juno: נשרף ע'י הקרתגים, נראים בסימני שריפה. ביקרו אחר הצהריים לאור זהוב." },
   ]},
 ];</script>
 <script>const TRAVEL = {
@@ -670,6 +764,7 @@
       const areaFrac = (r.w*r.h)/10000;
       const fs = Math.max(10, Math.min(22, 9+areaFrac*260));
       el.style.left=r.x+"%"; el.style.top=r.y+"%"; el.style.width=r.w+"%"; el.style.height=r.h+"%";
+      if(c.img){ el.classList.add("has-img"); el.style.backgroundImage=`url('${c.img}')`; }
       el.innerHTML = `<div class="seal-mini">✓</div>
         <div class="tz-name" style="font-size:${fs}px">${c.city}</div>
         <div class="tz-frac">${cv}/${c.sites.length}</div>
@@ -701,7 +796,7 @@
 
   function getItemsForCat(c, catKey){
     if(catKey === "architecture"){
-      return c.sites.map(s => ({ id: idOf(c.city, s.name), name: s.name, sub: s.architect+" · "+s.period, prio: s.prio, custom:false }));
+      return c.sites.map(s => ({ id: idOf(c.city, s.name), name: s.name, sub: s.architect+" · "+s.period, prio: s.prio, info: s.info||"", custom:false }));
     }
     const arr = customItems[catCityKey(catKey, c.city)] || [];
     return arr.map(it => ({ id: it.id, name: it.name, sub:"", prio:0, custom:true, cat:catKey }));
@@ -832,6 +927,10 @@
     document.getElementById("mName").textContent = it.name;
     document.getElementById("mArch").textContent = it.sub || "";
     document.getElementById("mPeriod").textContent = c.city;
+    const infoEl = document.getElementById("mInfo");
+    const infoTxt = document.getElementById("mInfoText");
+    if(it.info){ infoEl.style.display=""; infoTxt.textContent=it.info; }
+    else { infoEl.style.display="none"; }
     updateVisitBtn(it.id);
     const ex = extra[it.id] || {};
     document.getElementById("mOpinion").value = ex.opinion || "";
@@ -940,6 +1039,134 @@
   document.addEventListener("keydown", e=>{
     if(e.key==="Escape"){ bBackdrop.classList.remove("open"); }
   });
+
+  // ---- tab switching ----
+  const BINGO_ELS = [document.querySelector(".board-frame"), document.getElementById("cityview")];
+  const mainHeader = document.querySelector("header.top");
+  function switchTab(tab){
+    const datesSection = document.getElementById("datesSection");
+    const tabBingo = document.getElementById("tabBingo");
+    const tabDates = document.getElementById("tabDates");
+    if(tab === "dates"){
+      BINGO_ELS.forEach(el=>{ if(el) el.style.display="none"; });
+      datesSection.style.display="block";
+      tabBingo.style.display="";
+      tabDates.style.display="none";
+      renderDates();
+    } else {
+      BINGO_ELS.forEach(el=>{ if(el) el.style.display=""; });
+      // restore cityview display only if it was open
+      document.getElementById("cityview").style.display = "";
+      datesSection.style.display="none";
+      tabBingo.style.display="none";
+      tabDates.style.display="";
+      renderTreemap();
+    }
+  }
+  window.switchTab = switchTab;
+
+  // ---- dates data ----
+  const DATES_KEY = "sopralluogo_dates_v1";
+  let datesData = {};
+  try { datesData = JSON.parse(localStorage.getItem(DATES_KEY)) || {}; } catch(e){}
+  const saveDates = () => { try{ localStorage.setItem(DATES_KEY, JSON.stringify(datesData)); }catch(e){} };
+
+  const DATE_NAMES = [
+    "גלריה הברה","קפה ופסנתר","סיור בשוק","טיול לאגם","קונצרט נשמות","ערב בישול",
+    "שכונה חדשה","ביקור במוזיאון","ערב קולנוע","ספא וסאונה","אוכל שוק","הופעה פתוחה",
+    "שייט בתעלה","ביקור בגלריה","ערב יין","מסעדה חדשה","סיור אופניים","יום כיף בחוץ",
+    "בית קפה ועבודה","ערב משחקים","טיול לטבע","פסטיבל עירוני","גלידה וסיור","ערב ספא בבית"
+  ];
+
+  function dateCalendarLink(week, planned){
+    const title = encodeURIComponent("דייט שבוע "+week+" — "+(planned||DATE_NAMES[week-1]));
+    const details = encodeURIComponent("דייט שבועי מ-Sopralluogo 🇮🇹");
+    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}`;
+  }
+
+  function renderDates(){
+    const grid = document.getElementById("datesGrid");
+    if(!grid) return;
+    grid.innerHTML = "";
+    for(let w=1;w<=24;w++){
+      const d = datesData["w"+w] || {};
+      const row = document.createElement("div");
+      row.className = "date-row"+(d.done?" visited":"");
+
+      // photo preview if exists
+      const photoThumb = d.photo ? `<img src="${d.photo}" style="width:100%;max-height:70px;object-fit:cover;margin-bottom:6px;border:1px solid var(--line);">` : "";
+
+      row.innerHTML = `
+        <div class="date-cell">${w}</div>
+        <div class="date-cell">
+          <div class="date-label">תכנון</div>
+          <textarea class="date-input" rows="2" data-week="${w}" data-field="planned" placeholder="${DATE_NAMES[w-1]}">${d.planned||""}</textarea>
+        </div>
+        <div class="date-cell">
+          <div class="date-label">בפועל</div>
+          <textarea class="date-input" rows="2" data-week="${w}" data-field="actual" placeholder="מה קרה בסוף?">${d.actual||""}</textarea>
+        </div>
+        <div class="date-cell">
+          <div class="date-label">זכרונות</div>
+          ${photoThumb}
+          <textarea class="date-input" rows="2" data-week="${w}" data-field="notes" placeholder="רגע מיוחד, פרט מצחיק…">${d.notes||""}</textarea>
+          <button class="date-photo-btn" data-week="${w}">📷 תמונה</button>
+          <input type="file" accept="image/*" data-week="${w}" style="display:none;" class="date-photo-input">
+        </div>
+        <div class="date-cell" style="text-align:center;padding:6px;">
+          <button class="date-cal-btn" title="הוסף ליומן" onclick="window.open('${dateCalendarLink(w, d.planned)}','_blank')">📅</button>
+          <br>
+          <button class="date-cal-btn" style="font-size:13px;" title="${d.done?'סמן כלא בוצע':'סמן כבוצע'}" onclick="toggleDateDone(${w})">${d.done?'✓':''}</button>
+        </div>`;
+      grid.appendChild(row);
+    }
+
+    // wire up autosave for textareas
+    grid.querySelectorAll(".date-input").forEach(ta=>{
+      ta.addEventListener("input", e=>{
+        const w = e.target.dataset.week;
+        const f = e.target.dataset.field;
+        if(!datesData["w"+w]) datesData["w"+w]={};
+        datesData["w"+w][f] = e.target.value;
+        saveDates();
+      });
+    });
+
+    // wire up photo buttons
+    grid.querySelectorAll(".date-photo-btn").forEach(btn=>{
+      const w = btn.dataset.week;
+      const inp = btn.nextElementSibling;
+      btn.addEventListener("click", ()=> inp.click());
+      inp.addEventListener("change", e=>{
+        const file = e.target.files[0];
+        if(!file) return;
+        const reader = new FileReader();
+        reader.onload = ev=>{
+          const img = new Image();
+          img.onload = ()=>{
+            const maxW=640, scale=Math.min(1,maxW/img.width);
+            const canvas=document.createElement("canvas");
+            canvas.width=img.width*scale; canvas.height=img.height*scale;
+            canvas.getContext("2d").drawImage(img,0,0,canvas.width,canvas.height);
+            if(!datesData["w"+w]) datesData["w"+w]={};
+            datesData["w"+w].photo=canvas.toDataURL("image/jpeg",.75);
+            saveDates();
+            renderDates();
+          };
+          img.src=ev.target.result;
+        };
+        reader.readAsDataURL(file);
+        e.target.value="";
+      });
+    });
+  }
+
+  window.toggleDateDone = function(w){
+    if(!datesData["w"+w]) datesData["w"+w]={};
+    datesData["w"+w].done = !datesData["w"+w].done;
+    saveDates();
+    renderDates();
+  };
 
   renderTreemap();
   refreshStats();
